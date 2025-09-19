@@ -1,56 +1,5 @@
 
 
-### Mock
-
-Les mocks sont programmés avec des attentes (expectations) et permettent de contrôler que le système sous test a bien appelé certains méthodes, souvent en vérifiant les paramètres ou le nombre d’appels.
-
-
-__Les mocks focalisent sur le comportement et déclenchent l’échec du test si les interactions attendues (méthode appelée, nombre de fois, avec ces paramètres) ne sont pas respectées.__
-
-
-```java
-// Interface UserRepository
-public interface UserRepository {
-    User findUserById(int id);
-}
-
-// Classe UserService
-public class UserService {
-    private UserRepository userRepository;
-    public UserService(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
-    public String getUserName(int id) {
-        User user = userRepository.findUserById(id);
-        return user != null ? user.getName() : "User not found";
-    }
-}
-
-// Test avec Mockito
-import static org.mockito.Mockito.*;
-import static org.junit.Assert.*;
-
-public class UserServiceTest {
-    @Test
-    public void testGetUserName() {
-        // Créer un mock de UserRepository
-        UserRepository mockRepository = mock(UserRepository.class);
-        // Définir le comportement du mock
-        User mockUser = new User(1, "John Doe");
-        when(mockRepository.findUserById(1)).thenReturn(mockUser);
-
-        // Utiliser le mock pour tester UserService
-        UserService userService = new UserService(mockRepository);
-        String userName = userService.getUserName(1);
-
-        // Vérification
-        assertEquals("John Doe", userName);
-        verify(mockRepository).findUserById(1); // Vérification de l'interaction
-    }
-}
-```
-
-
 
 ### Stub
 
@@ -109,3 +58,57 @@ public class InMemoryUserRepository implements UserRepository {
     }
 }
 ```
+
+
+
+### Mock
+
+Les mocks sont programmés avec des attentes (expectations) et permettent de contrôler que le système sous test a bien appelé certains méthodes, souvent en vérifiant les paramètres ou le nombre d’appels.
+
+
+__Les mocks focalisent sur le comportement et déclenchent l’échec du test si les interactions attendues (méthode appelée, nombre de fois, avec ces paramètres) ne sont pas respectées.__
+
+
+```java
+// Interface UserRepository
+public interface UserRepository {
+    User findUserById(int id);
+}
+
+// Classe UserService
+public class UserService {
+    private UserRepository userRepository;
+    public UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+    public String getUserName(int id) {
+        User user = userRepository.findUserById(id);
+        return user != null ? user.getName() : "User not found";
+    }
+}
+
+// Test avec Mockito
+import static org.mockito.Mockito.*;
+import static org.junit.Assert.*;
+
+public class UserServiceTest {
+    @Test
+    public void testGetUserName() {
+        // Créer un mock de UserRepository
+        UserRepository mockRepository = mock(UserRepository.class);
+        // Définir le comportement du mock
+        User mockUser = new User(1, "John Doe");
+        when(mockRepository.findUserById(1)).thenReturn(mockUser);
+
+        // Utiliser le mock pour tester UserService
+        UserService userService = new UserService(mockRepository);
+        String userName = userService.getUserName(1);
+
+        // Vérification
+        assertEquals("John Doe", userName);
+        verify(mockRepository).findUserById(1); // Vérification de l'interaction
+    }
+}
+```
+
+
