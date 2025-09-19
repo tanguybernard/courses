@@ -59,6 +59,9 @@ public class InMemoryUserRepository implements UserRepository {
 }
 ```
 
+### Spie
+
+Le mock ne conserve aucune logique réelle, le spy permet d’utiliser la vraie logique, tout en permettant la vérification et la simulation partielle.
 
 
 ### Mock
