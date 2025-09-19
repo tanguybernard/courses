@@ -9,6 +9,8 @@ Durée : 2 jours
 
 ### Resources
 
+https://shodo.io.gitlab.io/workshops/tdd/#/
+
 https://gitlab.com/shodo.io/workshops/tdd
 
 ### Jour 1
