@@ -17,3 +17,8 @@ https://gitlab.com/shodo.io/workshops/tdd
 
 ### Jour 2
 
+
+Tests Doubles
+
+- Mock
+
