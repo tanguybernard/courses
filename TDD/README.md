@@ -2,8 +2,8 @@
 
 ## Intro
 
-Public : Etudiants M1 info
-Durée : 2 jours
+- Public : Etudiants M1 info
+- Durée : 2 jours
 
 ## Cours
 
@@ -17,7 +17,7 @@ https://gitlab.com/shodo.io/workshops/tdd
 
 - Fondamentaux
     - Definition du TDD
-    - Red Green REfacto
+    - Red Green Refacto
     - Avantages 
 
 - Pratiques
