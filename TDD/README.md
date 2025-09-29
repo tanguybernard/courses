@@ -13,6 +13,13 @@ https://shodo.io.gitlab.io/workshops/tdd/#/
 
 https://gitlab.com/shodo.io/workshops/tdd
 
+### Slides
+
+https://slides.com/tarcaye/tdd-mars-2024-1#/41/0/0
+
+https://slides.com/tarcaye/tdd-jan-2023-2-2
+
+
 ### Jour 1
 
 - Fondamentaux
