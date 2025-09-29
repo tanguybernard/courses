@@ -31,11 +31,11 @@ https://slides.com/tarcaye/tdd-jan-2023-2-2
     - Red Green Refacto
     - Prise en main d'une lib (Juint, Jest...)
     - Exercices
-
+- Stratégie de tests (ex : Pyramides)
 
  A rajouter qq parts : 
-- Stratégie de tests (ex : Pyramides)
--  Test solitaire et sociable (https://martinfowler.com/bliki/UnitTest.html)
+
+- Test solitaire et sociable (https://martinfowler.com/bliki/UnitTest.html)
 - Test paramétrés
 
 ### Jour 2
