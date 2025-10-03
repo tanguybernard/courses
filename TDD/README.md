@@ -5,20 +5,7 @@
 - Public : Etudiants M1 info
 - Durée : 2 jours
 
-## Cours
-
-### Resources
-
-https://shodo.io.gitlab.io/workshops/tdd/#/
-
-https://gitlab.com/shodo.io/workshops/tdd
-
-### Slides
-
-https://slides.com/tarcaye/tdd-mars-2024-1
-
-https://slides.com/tarcaye/tdd-jan-2023-2-2
-
+## Programme
 
 ### Jour 1
 
@@ -30,21 +17,34 @@ https://slides.com/tarcaye/tdd-jan-2023-2-2
 - Pratiques
     - Red Green Refacto
     - Prise en main d'une lib (Juint, Jest...)
+    - Test paramétrés
     - Exercices
 - Stratégie de tests (ex : Pyramides)
 
- A rajouter qq parts : 
-
-- Test solitaire et sociable (https://martinfowler.com/bliki/UnitTest.html)
-- Test paramétrés
 
 ### Jour 2
 
 - Avancées
     - Tests Doubles (Fake)
     - Exercice sur un projet plus complexe
- 
+    - Test solitaire et sociable (https://martinfowler.com/bliki/UnitTest.html)
+
+
 - Automatisation
-    - Gitlab CI... 
+    - Github Action (voir: .github/workflows/test-leap-year.yml)
 
 
+
+
+
+### Resources
+
+https://shodo.io.gitlab.io/workshops/tdd/#/
+
+https://gitlab.com/shodo.io/workshops/tdd
+
+Slides :
+
+https://slides.com/tarcaye/tdd-mars-2024-1
+
+https://slides.com/tarcaye/tdd-jan-2023-2-2
