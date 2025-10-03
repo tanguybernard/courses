@@ -1,4 +1,4 @@
 
 export enum Movement {
-    L, R, F
+    L = "L", R = "R", F = "F"
 }

@@ -8,30 +8,9 @@ export class Rover {
     constructor(private position: Position, private direction: Direction) {
     }
 
-    moveV1(movement: Movement) {
-        switch (movement) {
-            case Movement.F:
-                this.position = new Position(this.position.x, this.position.y+1);
-
-        }
-        return this.position
-
-    }
-
-    moveV2(movement: Movement) {
-        if (movement === Movement.F) {
-            switch (this.direction) {
-                case Direction.NORTH: return this.position.moveNorth();
-                case Direction.SOUTH: return this.position.moveSouth();
-                case Direction.EAST: return this.position.moveEast();
-                case Direction.WEST: return this.position.moveWest();
-            }
-        }
-    }
-
-    executeCommands(movements: Movement[]): string {
+    executeCommands(movements: string): string {
         for (const movement of movements) {
-            this.moveV3(movement);
+            this.moveV3(Movement[movement]);
         }
         return this.position.x + ':'+this.position.y+ ":"+this.direction;
     }
