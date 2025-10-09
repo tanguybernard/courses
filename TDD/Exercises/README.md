@@ -3,7 +3,7 @@
 
 ## Fizzbuzz
 
-Premier test simple, comprendre la logique (cas du 0 souvent oublié.)
+Premier test simple, comprendre la logique (démo à faire)
 
 ## Kata Radioactivité
 

@@ -17,15 +17,15 @@
 - Pratiques
     - Red Green Refacto
     - Prise en main d'une lib (Juint, Jest...)
-    - Test paramétrés
-    - Exercices
+    - Test paramétrés (Sur Roman Numerals par exemple)
+    - Exercices (Mars Rover, faire en mob programming ?)
 - Stratégie de tests (ex : Pyramides)
 
 
 ### Jour 2
 
 - Avancées
-    - Tests Doubles (Fake)
+    - Tests Doubles (Fake, Mock => Kata Wallet)
     - Exercice sur un projet plus complexe
     - Test solitaire et sociable (https://martinfowler.com/bliki/UnitTest.html)
 
