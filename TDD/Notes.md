@@ -119,3 +119,25 @@ public class UserServiceTest {
 
 
 https://www.sfeir.dev/back/un-test-pour-les-gouverner-tous/
+
+
+## Transformation Priority Premises (TPP)
+
+Liste (simplifiée) des TPP selon Uncle Bob :
+
+
+| Priorité | Transformation                 | Description                                                 |
+| -------- | ------------------------------ | ----------------------------------------------------------- |
+| 1️⃣      | **{} → nil**                   | D’un code vide à un retour vide (ou `None`, `null`, etc.)   |
+| 2️⃣      | **nil → constant**             | Retourner une constante fixe                                |
+| 3️⃣      | **constant → variable**        | Utiliser une variable au lieu d’une constante               |
+| 4️⃣      | **statement → statements**     | Ajouter une séquence d’instructions                         |
+| 5️⃣      | **unconditional → if**         | Ajouter une condition (`if`)                                |
+| 6️⃣      | **scalar → array**             | Passer d’une valeur simple à une collection                 |
+| 7️⃣      | **statement → tail recursion** | Transformer une instruction en appel récursif               |
+| 8️⃣      | **if → while**                 | Répéter une action                                          |
+| 9️⃣      | **expression → function**      | Extraire du code dans une fonction                          |
+| 🔟       | **variable → assignment**      | Remplacer une variable calculée par une affectation directe |
+| 1️⃣1️⃣   | **statement → recursion**      | Généraliser une séquence en récursion                       |
+| 1️⃣2️⃣   | **if → polymorphism**          | Remplacer une structure conditionnelle par du polymorphisme |
+
