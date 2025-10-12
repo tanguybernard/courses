@@ -1,14 +1,14 @@
 
 
-## 🧩 Kata : Calcul de la TVA sur un panier
+## Kata : Calcul de la TVA sur un panier
 
-### 🎯 Objectif
+### Objectif
 
 À partir d’un panier d’articles et des informations d’une **entreprise**, déterminer si une **TVA** s’applique et renvoyer le **panier enrichi** avec les montants **HT, TVA et TTC**.
 
 ---
 
-### 📦 Contexte
+### Contexte
 
 Une entreprise possède un compte sur la plateforme et passe une commande composée de plusieurs articles.
 Avant d’afficher le récapitulatif sur le site, il faut :
@@ -20,7 +20,7 @@ Avant d’afficher le récapitulatif sur le site, il faut :
 
 ---
 
-### ⚙️ Règles de gestion
+### Règles de gestion
 
 #### Détermination de la TVA
 
