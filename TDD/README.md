@@ -25,10 +25,11 @@
 ### Jour 2
 
 - Avancées
-    - Tests Doubles (Fake, Mock => Kata Wallet)
-    - Exercice sur un projet plus complexe
+    - Kata Rover en Oustide In (Participant) 
+    - Tests Doubles (Fake, Mock => Kata Wallet à présenter)
+    - Exercice Birthday Greetings
     - Test solitaire et sociable (https://martinfowler.com/bliki/UnitTest.html)
-
+    - Trip Service Kata pour travailler sur un legacy
 
 - Automatisation
     - Github Action (voir: .github/workflows/test-leap-year.yml)
