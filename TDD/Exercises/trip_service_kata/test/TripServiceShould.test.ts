@@ -10,17 +10,21 @@ describe("TripServiceShould", () => {
 
     it("devrait retourner aucun voyages pour un utilisateur n'ayant pas reservé", () => {
 
+        //ARRANGE
         const mockUser = new User();
-        const fakeSession = { getLoggedUser: () => mockUser };
+        const stubSession = { getLoggedUser: () => mockUser };
 
+        //ACT
         //null pour tripDao pas nécessaire pour ce test
-        const tripService = new TripService(fakeSession, null);
+        const tripService = new TripService(stubSession, null);
 
+        //ASSERT
         expect(tripService.getTripsByUser(mockUser)).toEqual([]);
     });
 
     it("devrait retourner un voyage", () => {
 
+        //ARRANGE
         const mockUser = new User();
         mockUser.addTrip(new Trip());
 
@@ -28,15 +32,16 @@ describe("TripServiceShould", () => {
         // IMPORTANT : l'utilisateur connecté doit être ami de celui qu'on cherche
         mockUser.addFriend(loggedUser);
 
-        const fakeSession = { getLoggedUser: () => loggedUser };
+        const stubSession = { getLoggedUser: () => loggedUser };
 
         const fakeTripDao = { findTripsByUser: (user: User) => user.getTrips() };
 
-        const tripService = new TripService(fakeSession, fakeTripDao);
+        const tripService = new TripService(stubSession, fakeTripDao);
 
         //ACT
-        const resultat = tripService.getTripsByUser(mockUser)
+        const tripsFound = tripService.getTripsByUser(mockUser)
 
-        expect(resultat.length).toBeGreaterThan(0);
+        //ASSERT
+        expect(tripsFound.length).toBeGreaterThan(0);
     });
 });

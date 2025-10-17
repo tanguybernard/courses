@@ -63,4 +63,25 @@ describe('Kata Wallet', () =>{
         expect(mockFn).toHaveBeenCalledWith(4, "EURO", "DOLLARS");
         expect(mockFn).toHaveBeenCalledTimes(1);
     });
+
+
+    /*
+
+    const database = PgDatabase();
+    const busMessage = MocksbusMessage;
+
+
+
+    cont MocksbusMessage = jest.fn((contenu: string) => {
+
+            if(contenu == null) {
+                throw Exception("message null")
+                }
+   });
+        const result = creationBaitmenet(database, busMessage)
+
+        expect(result).toEqual(123)
+
+
+     */
 })
