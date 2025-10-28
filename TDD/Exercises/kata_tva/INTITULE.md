@@ -1,6 +1,3 @@
-Voici une version adaptée de ton énoncé pour un **panier d’offres TV** avec les 4 offres : **Sport, Jeunesse, Cinéma, International** 👇
-
----
 
 ## Kata : Calcul de la TVA sur un panier d’offres TV
 

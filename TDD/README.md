@@ -44,6 +44,8 @@ https://shodo.io.gitlab.io/workshops/tdd/#/
 
 https://gitlab.com/shodo.io/workshops/tdd
 
+https://knplabs.com/fr/blog/mocks-fakes-stubs-dummy-et-spy-faire-la-difference/
+
 Slides :
 
 https://slides.com/tarcaye/tdd-mars-2024-1
