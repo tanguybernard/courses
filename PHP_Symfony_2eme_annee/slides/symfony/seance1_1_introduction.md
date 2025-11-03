@@ -2,6 +2,21 @@
 
 ---
 
+
+## Crédits
+
+<p style="text-align:left;">
+Ce cours est adapté à partir du travail original de<br>
+<strong>David Annebicque</strong>
+</p>
+
+<p style="text-align:left;">
+Lien : <a href="https://cours.davidannebicque.fr/symfony" target="_blank" rel="noopener">https://cours.davidannebicque.fr/symfony</a>
+</p>
+
+
+---
+
 ## Présentation
 
 Découvrir et appréhender un framework PHP web.
