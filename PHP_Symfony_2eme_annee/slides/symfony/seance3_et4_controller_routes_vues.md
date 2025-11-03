@@ -1,5 +1,23 @@
 # Séance 3 et 4 : Controller, Routes et vues
 
+----
+
+
+## Crédits
+
+<p style="text-align:left;">
+Ce cours est adapté à partir du travail original de<br>
+<strong>David Annebicque</strong>
+</p>
+
+<p style="text-align:left;">
+Lien : <a href="https://cours.davidannebicque.fr/symfony" target="_blank" rel="noopener">https://cours.davidannebicque.fr/symfony</a>
+</p>
+
+
+
+----
+
 ## Objectifs
 
 Tout au long des prochaines séances nous allons mettre en place un système de blog simple permettant de poster des articles, d'obtenir des commentaires et de gérer les accès avec des droits différenciés.
