@@ -3,5 +3,13 @@
 {% block title %}Dashboard{% endblock %}
 
 {% block body %}
-    Bonjour {{ app.user.email }}
+
+    <h1 class="page-title">Dashboard</h1>
+
+    <div class="card">
+        <p>Bonjour <strong>{{ app.user.email }}</strong></p>
+        <p>Bienvenue sur votre espace.</p>
+        <a class="btn" href="{{ path('product_index') }}">Accéder aux produits</a>
+    </div>
+
 {% endblock %}
