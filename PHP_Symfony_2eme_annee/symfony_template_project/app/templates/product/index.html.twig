@@ -1,0 +1,34 @@
+<h1>Créer un produit</h1>
+
+{{ form_start(form) }}
+    {{ form_row(form.name) }}
+    {{ form_row(form.price) }}
+    <button class="btn btn-primary">Créer</button>
+{{ form_end(form) }}
+
+<hr>
+
+<h2>Liste des produits</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nom</th>
+            <th>Prix</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for product in products %}
+        <tr>
+            <td>{{ product.id }}</td>
+            <td>{{ product.name }}</td>
+            <td>{{ product.price }} €</td>
+        </tr>
+    {% else %}
+        <tr>
+            <td colspan="3">Aucun produit</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
