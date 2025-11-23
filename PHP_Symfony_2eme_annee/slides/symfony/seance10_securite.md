@@ -1,4 +1,23 @@
-# Séance 10 : Sécurité
+## Séance 10 : Sécurité
+
+<p style="text-align:center; color:gray;">
+  Tanguy Bernard
+</p>
+
+----
+
+## Crédits
+
+<p style="text-align:left;">
+Ce cours est adapté à partir du travail original de<br>
+<strong>David Annebicque</strong>
+</p>
+
+<p style="text-align:left;">
+Lien : <a href="https://cours.davidannebicque.fr/symfony" target="_blank" rel="noopener">https://cours.davidannebicque.fr/symfony</a>
+</p>
+
+----
 
 ## Introduction
 
@@ -22,6 +41,9 @@ Si vous avez installé le projet avec la version complète (webapp), cette ligne
 
 La sécurité dans symfony implique plusieurs éléments :
 
+<div style="max-height: 500px; overflow-y: auto; border: 1px solid #ccc; padding: 10px; font-size: 0.7em;">
+
+
 * Le firewall: qui est la porte d'entrée pour le système d'authentification, on définit différents firewall (au minimum 1 seul) qui va permettre de mettre en place le bon système de connexion pour l'url spécifiée via un pattern.
 * Le provider : qui permet au firewall d'interroger une collection d'utilisateurs/mot de passe ; C'est une sorte de base de tous les utilisateurs avec les mots de passe. Il existe deux type par défaut :
     * in memory : directement dans le fichier security.yml mais du coup les hash des mots de passes sont disponible dans un fichier&#x20;
@@ -36,6 +58,8 @@ La sécurité dans symfony implique plusieurs éléments :
 * Les rôles : qui permettent de définir le niveau d'accès des utilisateurs connectés (authentifiés) et de configurer le firewall en fonction de ces rôles. Les rôles peuvent être hierarchisées afin d'expliquer par exemple qu'un administrateur (ROLE\_ADMIN par exemple) et avant tout un utilisateur (ROLE\_USER).
 * Le "guard"  ou "authenticator" qui va gérer l'authentification, au travers de "passport". Il va par exemple vérifier que le couple login/mot de passe existe dans l'un des provider.
 
+</div>
+
 ----
 
 ## Configuration
@@ -47,6 +71,8 @@ A partir de la version 4, et avec le composant "maker", la gestion de la sécuri
 ### Créer sa classe User
 
 Si vous ne disposez pas encore d'une classe permettant la gestion des utilisateurs, il est possible d'en créer une avec la console. Si vous disposez déjà d'une classe utilisateur (ou que vous souhaitez utiliser plusieurs entités, il faudra modifier votre code en implémentant les interfaces `UserInterface, PasswordAuthenticatedUserInterface` et en implémentant les méthodes imposées par ces interfaces).
+
+----
 
 L'instruction ci-dessous permet de lancer la console pour créer la table User.
 
@@ -280,6 +306,8 @@ Une nouvelle fois la console va nous permettre de dégrossir le travail et produ
 bin/console make:auth
 ```
 
+----
+
 Pour le résultat ci-dessous.
 
 ```bash
@@ -314,6 +342,8 @@ bin/console make:auth                                                           
  - Review & adapt the login template: templates/security/login.html.twig.
 ```
 
+----
+
 Cette commande, comme indiqué génère plusieurs fichiers :
 
 * LoginAuthenticator.php : qui explique comment on authentifie un utilisateur (au travers de passeport)
@@ -326,7 +356,6 @@ Le fichier security.yaml est mis à jour pour faire le lien avec cet authenticat
 
 ### LoginAuthenticator
 
-{% code lineNumbers="true" %}
 
 ```php
 <?php
@@ -390,10 +419,6 @@ class LoginAuthenticator extends AbstractLoginFormAuthenticator
 
 ```
 
-
-
-{% endcode %}
-
 Note:
 Attention !! Il faut modifier la ligne 51 avec une route qui existe dans votre projet
 
@@ -401,7 +426,6 @@ Attention !! Il faut modifier la ligne 51 avec une route qui existe dans votre p
 
 ### SecurityController
 
-{% code lineNumbers="true" %}
 
 ```php
 <?php
@@ -439,13 +463,11 @@ class SecurityController extends AbstractController
 
 ```
 
-{% endcode %}
 
 ----
 
 ### login.html.twig
 
-{% code lineNumbers="true" %}
 
 ```twig
 {% extends 'base.html.twig' %}
@@ -493,13 +515,10 @@ class SecurityController extends AbstractController
 
 ```
 
-{% endcode %}
-
 ----
 
 ### Security.yaml mis à jour
 
-{% code lineNumbers="true" %}
 
 ```yaml
 security:
@@ -553,7 +572,6 @@ when@test:
 
 ```
 
-{% endcode %}
 
 ----
 
@@ -593,6 +611,8 @@ password_hashers:
 
 Le Provider permet de faire le lien avec une source de données contenant les couples login/mot de passe ou des clés d'API... Les providers peuvent être des entités, des données "in\_memory", ... Cette partie est configurée a été configurée suite à la création de l'entité User, avec la méthode de connection (login), ici l'email sera utilisé. Il est possible de coupler plusieurs provider tant que l'email est unique sur l'ensemble des sources.
 
+----
+
 ```yaml
 providers:
         # used to reload user from session & other features (e.g. switch_user)
@@ -608,6 +628,8 @@ providers:
 
 C'est la partie essentielle du process de sécurisation. C'est lui qui permet de dire quand il faut vérifier et authentifier un utilisateur. Le firewall permet de déterminer pour un pattern d'url (une requête (request)), la méthode d'authentification à utiliser (une page de connexion, une clé d'API, une dépendance à un fournisseur OAuth, ...).
 
+----
+
 ```yaml
     firewalls:
         dev:
@@ -621,6 +643,8 @@ C'est la partie essentielle du process de sécurisation. C'est lui qui permet de
                 path: app_logout
 ```
 
+----
+
 L'exemple ci-dessus permet de définir que pour les routes particulières *(les assets, le profiler)*, il n'y a pas de vérification. Pour toutes les autres routes (main), il faudra utiliser le provider contenant nos User et l'authenticator gérant le formulaire de Login. C'est ici que l'on pourrait proposer plusieurs méthodes de connexion en ajoutant les authenticator adaptés.
 
 Symfony propose des exemples pour de nombreuses méthodes d'authentification (login, ldap, json, ...) que vous [trouverez sur la documentation officielle](https://symfony.com/doc/current/security/auth_providers.html)
@@ -630,6 +654,8 @@ Symfony propose des exemples pour de nombreuses méthodes d'authentification (lo
 ### La gestion des rôles et les autorisations
 
 La gestion des roles se fait dans la partie "access\_control" du fichier security. Il permet de définir pour chaque pattern d'URL quel rôle peut y accèder. C'est là que l'on sécurise nos différentes parties. Il est donc important de construire et structurer nos URL correctement pour être efficace sur le filtrage. Il faut évidemment veiller à ce que les pages de connexion ne soient pas derrière une page sécurisée...
+
+----
 
 Exemple:
 

@@ -1,72 +1,130 @@
 <!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<html lang="fr">
+<head>
+	<meta charset="utf-8">
+	<title>Mes Cours Informatique</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-		<title>reveal.js</title>
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 
-		<link rel="stylesheet" href="dist/reset.css">
-		<link rel="stylesheet" href="dist/reveal.css">
-		<link rel="stylesheet" href="dist/theme/black.css">
+	<style>
+		body {
+			margin: 0;
+			font-family: "Poppins", sans-serif;
+			background: #0e0e0e;
+			color: #eee;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			min-height: 100vh;
+		}
 
-		<!-- Theme used for syntax highlighted code -->
-		<link rel="stylesheet" href="plugin/highlight/monokai.css">
-	</head>
-	<body>
-		<div class="reveal">
-			<div class="slides">
-				<section data-markdown="symfony/seance1_1_introduction.md"
-						 data-separator="^---$"
-						 data-separator-vertical="^----$"
-						 data-separator-notes="^Note:"
-						 data-charset="utf-8"
+		.container {
+			width: 90%;
+			max-width: 1100px;
+			text-align: center;
+		}
 
-				></section>
-				<section data-markdown="symfony/seance1_2_ecosysteme_symfony.md"
-						 data-separator="^---$"
-						 data-separator-vertical="^----$"
-						 data-separator-notes="^Note:"
-						 data-charset="utf-8"
-				></section>
-				<section data-markdown="symfony/seance2_architecture_et_1st_page.md"
-						 data-separator="^---$"
-						 data-separator-vertical="^----$"
-						 data-separator-notes="^Note:"
-						 data-charset="utf-8"
-				>
-				</section>
-				<section data-markdown="symfony/seance3_et4_controller_routes_vues.md"
-						 data-separator="^---$"
-						 data-separator-vertical="^----$"
-						 data-separator-notes="^Note:"
-						 data-charset="utf-8"
-				>
-				</section>
-				<section data-markdown="symfony/seance3_et4_controller_routes_vues.md"
-						 data-separator="^---$"
-						 data-separator-vertical="^----$"
-						 data-separator-notes="^Note:"
-						 data-charset="utf-8"
-				>
-				</section>
-			</div>
-		</div>
+		h1 {
+			font-size: 2.8rem;
+			margin-bottom: 40px;
+			font-weight: 700;
+			color: #b8afd1;
+		}
 
-		<script src="dist/reveal.js"></script>
-		<script src="plugin/notes/notes.js"></script>
-		<script src="plugin/markdown/markdown.js"></script>
-		<script src="plugin/highlight/highlight.js"></script>
-		<script>
-			// More info about initialization & config:
-			// - https://revealjs.com/initialization/
-			// - https://revealjs.com/config/
-			Reveal.initialize({
-				hash: true,
+		.cards {
+			display: grid;
+			grid-template-columns: repeat(3, 250px);
+			justify-content: center;
+			gap: 30px;
+		}
 
-				// Learn about plugins: https://revealjs.com/plugins/
-				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
-			});
-		</script>
-	</body>
+		@media (max-width: 820px) {
+			.cards {
+				grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+				justify-content: center;
+			}
+			.card { width: auto; }
+		}
+
+		.card {
+			flex: 0 0 auto;
+			background: #1a1a1a;
+			border-radius: 16px;
+			max-width: 250px;
+			height: 260px;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			text-decoration: none;
+			padding: 25px;
+			color: #fff;
+			border: 1px solid transparent;
+			transition: 0.3s ease;
+		}
+
+		.card:hover {
+			transform: translateY(-8px);
+			border-color: #48a9fe;
+			box-shadow: 0 0 15px rgba(72, 169, 254, 0.4);
+		}
+
+		.card img {
+			width: 90px;
+			height: 90px;
+			margin-bottom: 15px;
+			filter: drop-shadow(0 0 8px rgba(72, 169, 254, 0.4));
+		}
+
+		.tag {
+			margin-top: auto;
+			font-size: 0.8rem;
+			opacity: .6;
+		}
+
+		.logo-bg img {
+			width: 90px;
+			height: 90px;
+		}
+	</style>
+</head>
+<body>
+
+<div class="container">
+	<h1>📚 Cours Informatique</h1>
+
+	<div class="cards">
+
+		<a class="card" href="symfony/index.html">
+			<img src="assets/symfony_dynamic_02.svg" alt="Symfony">
+			<h2>Symfony</h2>
+			<p>#Framework #MVC</p>
+			<span class="tag">Cliquez pour commencer →</span>
+		</a>
+
+		<a class="card" href="php/index.html">
+			<img src="https://www.php.net/images/logos/new-php-logo.svg" alt="PHP">
+			<h2>PHP</h2>
+			<p>#Web #Backend</p>
+			<span class="tag">Cliquez pour commencer →</span>
+		</a>
+
+		<a class="card" href="tdd/index.html">
+			<img src="https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/testcafe.svg" alt="TDD">
+			<h2>TDD</h2>
+			<p>#Testing #CleanCode</p>
+			<span class="tag">Cliquez pour commencer →</span>
+		</a>
+
+		<a class="card" href="java/index.html">
+			<img src="assets/java.png" alt="Java Logo">
+			<h2>Java</h2>
+			<p>#Backend #OOP</p>
+			<span class="tag">Cliquez pour commencer →</span>
+		</a>
+
+	</div>
+</div>
+
+</body>
 </html>

@@ -1,4 +1,9 @@
-# Séance 5 : Modèles - Entités - ORM
+## Séance 5 : Modèles - Entités - ORM
+
+
+<p style="text-align:center; color:gray;">
+  Tanguy Bernard
+</p>
 
 ----
 
@@ -18,6 +23,8 @@ Lien : <a href="https://cours.davidannebicque.fr/symfony" target="_blank" rel="n
 ## Introduction
 
 Dans Symfony la notion de modèle se retrouve sous la forme (entre autre) d'une **Entité**. Une entité est une **classe PHP**, qui **peut** être connectée à une table de votre base de données via l'ORM. Lorsqu'une entité est liée à une table, via l'ORM, il y a en général un fichier "repository" associé. Un repository permet la génération de requêtes simples ou complexes et dont le développeur peut modifier à volonté.
+
+----
 
 Un ORM (**Object Relation Mapper**) permet de gérer manipuler et de récupérer des tables de données de la même façon qu'un objet quelconque, donc en gardant le langage PHP. Plus besoin de requête MySQL, PostgresSQL ou autre.
 
@@ -89,6 +96,8 @@ php bin/console make:entity
 ----
 
 Vous allez devoir répondre à une suite de question avec le nom de l'entité (par défaut cela donnera le nom de la table), et les champs à créer. Dans Symfony une entité possède toujours un champs id, qui est la clé primaire et qui est auto-incrémenté. Vous ne devez donc pas l'ajouter dans la console.
+
+----
 
 Pour la création d'un champs, il vous faudra donner :
 
@@ -214,6 +223,8 @@ Pour modifier des champs vous pouvez éditer directement le code généré dans 
 
 Pour ajouter des champs il vous faut relancer la commande `make:entity` en remettant le nom de votre entité.
 
+----
+
 Après chaque modification ou ajout il faut de nouveau générer le fichier de migration et mettre à jour la base de données. Vous pouvez bien sûr modifier ou créer plusieurs entités avant de faire une mise à jour de votre base de données.
 
 ----
@@ -263,19 +274,34 @@ DATABASE_URL="mysql://root:123456@mariadb:3306/nomDeLaBDD?charset=utf8mb4"
 
 ----
 
-* Créer la base de données (`bin/console doctrine:database:create`)
-* Créer une entité (`bin/console make:entity`), nommée Categorie et ajouter les champs suivants
-    * titre string 150 caractères
-    * ordre int
-* L'id sera automatiquement ajouté
-* Créer un nouveau contrôleur nommé "CategorieTestController"
-* Ajouter une route pour créer un nouvel enregistrement
-    * Créer un objet Categorie et compléter les informations (titre, ordre)
-    * Récupérer la connexion à doctrine (`$em = $this->getDoctrine()->getManager()`)
-    * Associer l'instance de Categorie avec l'ORM (`$em->persist($categorie))`
-    * Enregistrer dans la base de données (`$em->flush()`)
-* Appeler la route et vérifier que cela s'enregistre dans votre base de données
-* Essayer d'appeler la route plusieurs fois.
+<div style="max-height: 500px; overflow-y: auto; border: 1px solid #ccc; padding: 10px; font-size: 0.7em;">
+
+<h3>Exercice</h3>
+
+
+<ul>
+    <li>Créer la base de données (<code>bin/console doctrine:database:create</code>)</li>
+    <li>Créer une entité (<code>bin/console make:entity</code>), nommée <strong>Categorie</strong> et ajouter les champs suivants :
+        <ul>
+            <li><strong>titre</strong> : string, 150 caractères</li>
+            <li><strong>ordre</strong> : int</li>
+        </ul>
+    </li>
+    <li>L'id sera automatiquement ajouté</li>
+    <li>Créer un nouveau contrôleur nommé <strong>CategorieTestController</strong></li>
+    <li>Ajouter une route pour créer un nouvel enregistrement :
+        <ul>
+            <li>Créer un objet <code>Categorie</code> et compléter les informations (titre, ordre)</li>
+            <li>Récupérer la connexion à doctrine (<code>$em = $this->getDoctrine()->getManager()</code>)</li>
+            <li>Associer l'instance de Categorie avec l'ORM (<code>$em->persist($categorie)</code>)</li>
+            <li>Enregistrer dans la base de données (<code>$em->flush()</code>)</li>
+        </ul>
+    </li>
+    <li>Appeler la route et vérifier que cela s'enregistre dans votre base de données</li>
+    <li>Essayer d'appeler la route plusieurs fois.</li>
+</ul>
+</div>
+
 
 
 ----
@@ -284,7 +310,12 @@ DATABASE_URL="mysql://root:123456@mariadb:3306/nomDeLaBDD?charset=utf8mb4"
 
 Symfony et Doctrine proposes des requêtes prédéfinies, qui répondent aux usages les plus courant.
 
+----
+
 Si `$em` est le manager associé à une entité :
+
+<div style="max-height: 500px; overflow-y: auto; border: 1px solid #ccc; padding: 10px; font-size: 0.7em;">
+
 
 * `$em->find($id);` on récupère qu'un seul élément de l'entité avec l'id `$id`;
 * `$em->findAll();` on récupère toutes les entrées de l'entité concernée
@@ -293,7 +324,12 @@ Si `$em` est le manager associé à une entité :
 * `$em->findByX($search);` requêtes magiques où X correspond à n'importe quel champs défini dans votre entité
 * `$em->findOneByX($search)` ; requêtes magiques où X correspond à n'importe quel champs défini dans votre entité
 
+
   Par exemple `findBySlug('home')`; ou `findByTitle('Bonjour);` génèrera des requêtes de recherche automatiquement. Pour les requêtes avec plusieurs éléments il faudra faire une itération (foreach) ou lister les différents éléments.
+
+</div>
+
+----
 
 Exemple
 
@@ -360,17 +396,18 @@ Et l'utiliser dans votre *controller*
 $postRepository->maRequete('test');
 ```
 
+----
+
 ## Modification
 
 Ce dernier code effectue une création dans la base de données; pour une modification il suffit de modifier l'instanciation de l'entité de la sorte :
 
-<pre class="language-php"><code class="lang-php"><strong>use App\Repository\PostRepositoy;
-</strong>use Doctrine\ORM\EntityManagerInterface;
+```php
+use App\Repository\PostRepositoy;
+use Doctrine\ORM\EntityManagerInterface;
 
-<strong>...
-</strong><strong>
-</strong><strong>#[Route("/test/modification", name:"test")]
-</strong>public function testModification(
+#[Route("/test/modification", name:"test")]
+public function testModification(
         EntityManagerInterface $entityManager,
         PostRepository $postRepository)
 {
@@ -387,11 +424,16 @@ Ce dernier code effectue une création dans la base de données; pour une modifi
 
     return new Response('Sauvegarde OK sur : ' . $post->getId() );
 }
-</code></pre>
+```
 
-ici on récupère le *repository* de Post et on récupère l'id 1 ; tout le restant du code reste inchangé.
+Note: ici on récupère le *repository* de Post et on récupère l'id 1 ; tout le restant du code reste inchangé.
+
+----
 
 ## Exercice
+
+<div style="max-height: 400px; overflow-y: auto; border: 1px solid #ccc; padding: 10px; font-size: 0.8em;">
+
 
 * Créer une deuxième entité "Article" avec :
     * titre string 255
@@ -402,3 +444,5 @@ ici on récupère le *repository* de Post et on récupère l'id 1 ; tout le rest
 * Ajoutez des données depuis phpMyAdmin dans la table Article ( 3 articles) ou avec un nouveau contrôler de test
 * Modifiez votre contrôleur et la page "/articles" pour afficher tous les articles de votre table, par ordre décroissant (plus récent au plus ancien)
 * Modifiez votre page d'accueil pour afficher le dernier article publié.
+
+</div>

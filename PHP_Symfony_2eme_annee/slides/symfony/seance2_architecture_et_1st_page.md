@@ -1,4 +1,8 @@
-# Séance 2 : Architecture de Symfony & première page
+## Séance 2 : Architecture de Symfony & première page
+
+<p style="text-align:center; color:gray;">
+  Tanguy Bernard
+</p>
 
 
 ----

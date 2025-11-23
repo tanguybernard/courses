@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <title>Cours Symfony</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="../dist/reset.css">
+    <link rel="stylesheet" href="../dist/reveal.css">
+    <link rel="stylesheet" href="../dist/theme/black.css">
+
+    <link rel="stylesheet" href="../plugin/highlight/monokai.css">
+</head>
+<body>
+
+<div class="reveal">
+    <div class="slides">
+
+        <section data-markdown="seance1_1_introduction.md" data-separator="^---$" data-separator-vertical="^----$"></section>
+        <section data-markdown="seance1_2_ecosysteme_symfony.md" data-separator="^---$" data-separator-vertical="^----$"></section>
+        <section data-markdown="seance2_architecture_et_1st_page.md" data-separator="^---$" data-separator-vertical="^----$"></section>
+        <section data-markdown="seance3_et4_controller_routes_vues.md" data-separator="^---$" data-separator-vertical="^----$"></section>
+        <section data-markdown="seance5_orm.md" data-separator="^---$" data-separator-vertical="^----$"></section>
+        <section data-markdown="seance6.md" data-separator="^---$" data-separator-vertical="^----$"></section>
+        <section data-markdown="seance7_formulaire.md" data-separator="^---$" data-separator-vertical="^----$"></section>
+        <section data-markdown="seance10_securite.md" data-separator="^---$" data-separator-vertical="^----$"></section>
+
+    </div>
+</div>
+
+<script src="../dist/reveal.js"></script>
+<script src="../plugin/notes/notes.js"></script>
+<script src="../plugin/markdown/markdown.js"></script>
+<script src="../plugin/highlight/highlight.js"></script>
+<script>
+    Reveal.initialize({
+        hash: true,
+        slideNumber: 'c/t',
+        progress: true,
+        center: true,
+        plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+    });
+</script>
+
+</body>
+</html>

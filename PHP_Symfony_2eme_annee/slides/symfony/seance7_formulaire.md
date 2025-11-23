@@ -1,6 +1,23 @@
-# Séance 7 : Formulaires
+## Séance 7 : Formulaires
 
-## FORM
+<p style="text-align:center; color:gray;">
+  Tanguy Bernard
+</p>
+
+----
+
+## Crédits
+
+<p style="text-align:left;">
+Ce cours est adapté à partir du travail original de<br>
+<strong>David Annebicque</strong>
+</p>
+
+<p style="text-align:left;">
+Lien : <a href="https://cours.davidannebicque.fr/symfony" target="_blank" rel="noopener">https://cours.davidannebicque.fr/symfony</a>
+</p>
+
+----
 
 ### Introduction
 
@@ -12,13 +29,15 @@ La gestion des formulaire se fait via plusieurs classes PHP qui permettent entre
 * Permet d'hydrater une entité ou un objet rapidement
 * Gestion de template simple
 
-[La documentation officielle de Symfony sur les formulaires se trouve ici](https://symfony.com/doc/current/forms.html)
+----
 
 Pour pouvoir utiliser les formulaires, selon la version d'installation de Symfony, il peut être nécessaire d'installer les packages :
 
 ```bash
 composer require symfony/form
 ```
+
+----
 
 Pour les exemples ci-dessous, on considère l'entité suivante (exemple issue de la documentation Symfony) :
 
@@ -53,9 +72,13 @@ class Task
 }
 ```
 
+----
+
 ### Création
 
 On peut créer un Form de 2 façons différentes :
+
+----
 
 #### Directement dans un contrôleur
 
@@ -90,14 +113,19 @@ class DefaultController extends AbstractController
     }
 }
 ```
+----
 
-Cette première solution est rapide à mettre en place, et ne nécessite pas de fichier supplémentaire. Cependant, le formulaire ainsi créé n'est pas réutilisation dans d'autres méthodes.
+Cette première solution est rapide à mettre en place, et ne nécessite pas de fichier supplémentaire. Cependant, le formulaire ainsi créé n'est pas réutilisable dans d'autres méthodes.
+
+----
 
 #### Ou via des classes dédiées de type **FormType** en général dans le répertoire Form
 
 Cette seconde solution, qui implique des fichiers complémentaires, permet une plus grande souplesse et une meilleure ré-utilisation dans d'autres contextes.
 
 Le fichier ci-dessous permet de créer le même formulaire.
+
+----
 
 ```php
 // src/Form/TaskType.php
@@ -119,6 +147,8 @@ class TaskType extends AbstractType
 }
 ```
 
+----
+
 On utilise la classe FormBuilder accessible avec la méthode
 
 ```php
@@ -128,7 +158,11 @@ $form = $this->createForm(TaskType::class, $task);
 
 dans un contrôleur ; l'argument `$task` est l'entité que vous souhaitez hydrater; l'argument n'est pas obligatoire (pour un formulaire de recherche par exemple)
 
+----
+
 On peut mettre des champs de formulaire par défaut en modifiant l'entité avant de créer le formulaire et de lier le formulaire à l'entité :
+
+----
 
 Par exemple
 
@@ -149,6 +183,8 @@ Liste des champs possibles : <https://symfony.com/doc/current/reference/forms/ty
 
 Dans une classe dédiée le `createFormBuilder` est déjà instancié il ne vous reste qu'à rajouter les différents `add`.
 
+----
+
 ### TWIG
 
 Une fois le formulaire créé et initié il faut **renvoyer** le tout à TWIG via la méthode :
@@ -157,13 +193,17 @@ Une fois le formulaire créé et initié il faut **renvoyer** le tout à TWIG vi
 $form->createView();
 ```
 
+----
+
 Soit par exemple
 
 ```php
 return $this->render('template.html.twig', ['variable_form' => $form->createView()]);
-//ou
+//ou (Symfony ≥ 5.3)
 return $this->renderForm('template.html.twig', ['variable_form' => $form ];
 ```
+
+----
 
 Ensuite nous aurons plusieurs fonctions twig utiles:
 
@@ -176,15 +216,21 @@ Ensuite nous aurons plusieurs fonctions twig utiles:
 * `{{ form_row(monformulaire.nomduchamps) }}` affiche le form\_widget et form\_label
 * `{{ form_rest }}` affiche les champs restants non récupéré précédemment (token de vérification par exemple)
 
+----
+
 Ces fonctions permettent une grande maîtrise de la mise en forme d'un formulaire. Cependant, elle implique de détailler les éléments.
 
 Il est donc possible d'afficher un formulaire en une seule ligne, et le rendu dépendra du paramètrage (ou du template modèle) existant.
+
+----
 
 ```twig
 {{ form(variable_form) }}
 ```
 
 la `variable_form` correspond à la variable contenant le formulaire envoyée par le contrôleur. Il est enfin possible de préciser un "thème" pour votre formulaire avec la syntaxe :
+
+----
 
 ```twig
 {% form_theme form 'nom_du_template.html.twig' %}
@@ -193,7 +239,9 @@ la `variable_form` correspond à la variable contenant le formulaire envoyée pa
 
 Le template est un fichier twig qui vient préciser et définir pour chaque élément du formulaire (de manière globale), le rendu en HTML.
 
-Des thèmes par défaut sont proposées : <https://symfony.com/doc/current/form/bootstrap4.html> Et la documentation pour créer votre template : <https://symfony.com/doc/current/form/form_customization.html>
+Note: Des thèmes par défaut sont proposées : <https://symfony.com/doc/current/form/bootstrap4.html> Et la documentation pour créer votre template : <https://symfony.com/doc/current/form/form_customization.html>
+
+----
 
 ### Action / Request
 
@@ -202,6 +250,8 @@ Une fois le formulaire créé et affiche via TWIG il faut rajouter un comporteme
 * `handleRequest($request)` permet d'associer les valeurs input à la classe Form précédemment créé
 * `isSubmitted()` permet de savoir si le formulaire a été envoyé&#x20;
 * `isValid()`  permet de savoir si les données saisies sont valides&#x20;
+
+----
 
 Dans la majorité des cas on va tester si :
 
@@ -218,15 +268,21 @@ public function newAction(Request $request, EntityManagerInterface $entityManage
 }
 ```
 
+----
+
 ### Validation
 
 Les validations permettent de gérer des contraintes au niveau du formulaire ; Par exemple pour pourra forcer en PHP que le champs email soit bien un email ou que tel champs ne peut pas dépasser tel nombre de caractères, vous trouverez la liste des contraintes basiques sur site site de symfony : <http://symfony.com/doc/4.1/validation.html>
+
+----
 
 Ces contraintes ou assert peuvent être gérée de plusieurs façon XML, JSON, YAML, PHP ou en annotation dans notre cas; il faudra utiliser cette ligne tout en haut du contrôleur :
 
 ```php
 use Symfony\Component\Validator\Constraints as Assert;
 ```
+
+----
 
 Pour ensuite pouvoir utiliser l'annotation :
 
@@ -242,7 +298,12 @@ class Author
 
 Ici on vérifiera que le champs name doit être rempli.
 
+----
+
 ### Exercice
+
+<div style="max-height: 500px; overflow-y: auto; border: 1px solid #ccc; padding: 10px; font-size: 0.7em;">
+
 
 * Créer un formulaire directement dans CategorieController qui gèrera la création des Categories
 * Modifier la page de listing des catégories pour rajouter un lien édition et suppression
@@ -253,6 +314,11 @@ Ici on vérifiera que le champs name doit être rempli.
 * Rechercher pour mettre en place le template bootstrap pour les Form
 * Gérer les autres routes : modification et suppression
 
+</div>
+
+
+----
+
 ### Génération de CRUD
 
 Ce que nous venons de faire manuellement peut être généré en ligne de commande par Symfony via la commande :
@@ -261,7 +327,11 @@ Ce que nous venons de faire manuellement peut être généré en ligne de comman
 bin/console make:crud
 ```
 
+----
+
 On vous demandera le nom de l'entité précédé du nom de bundle, le chemin pour ce crud et si vous souhaitez avoir les fonction d'édition (ajout/ modification) mettez oui.
+
+----
 
 On peut également générer seulement les FormType :
 
@@ -269,7 +339,9 @@ On peut également générer seulement les FormType :
 php bin/console make:form
 ```
 
-Attention si vous modifier une entité les FormType ne sont pas générés automatiquement il faudra rajouter manuellement le champs fraichement créé.
+Note: Attention si vous modifier une entité les FormType ne sont pas générés automatiquement il faudra rajouter manuellement le champs fraichement créé.
+
+----
 
 ### Exercice
 

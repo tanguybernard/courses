@@ -1,4 +1,8 @@
-# Séance 3 et 4 : Controller, Routes et vues
+## Séance 3 et 4 : Controller, Routes et vues
+
+<p style="text-align:center; color:gray;">
+  Tanguy Bernard
+</p>
 
 ----
 
@@ -167,6 +171,8 @@ Ou sous TWIG on a deux fonctions :
 
 Les routes redirigent vers une méthode d'un contrôleur (une action); un controller Symfony se nomme de la sorte : NomDuController où le suffixe **Controller** est obligatoire et le nom du fichier et de la classe est en **CamelCase**.
 
+----
+
 Les différentes méthodes se nomment de la sorte :
 
 **nomDeLaMethode** est lui en **miniCamelCase**
@@ -215,20 +221,26 @@ public function index()
 }
 ```
 
-Ici on va récupérer le template présent dans templates/default/index.html.twig pour affecter la variable *variable*.
+Note: Ici on va récupérer le template présent dans templates/default/index.html.twig pour affecter la variable *variable*.
 
 ----
 
-### Exercice 1
+<div style="max-height: 600px; overflow-y: auto; border: 1px solid #ccc; padding: 10px; font-size: 0.7em;">
+<h3>Exercice 1</h3>
+<p>Les premières étapes consistent à mettre en place les bases de notre projet :</p>
+<ul>
+    <li>Une nouvelle installation de Symfony, pour un projet nommé <strong>blog</strong>
+        <ul>
+            <li>On installera toutes les dépendances en une seule fois pour plus de confort : <code>composer require webapp</code> dans le dossier <strong>blog/</strong></li>
+        </ul>
+    </li>
+    <li>Un contrôleur et la méthode pour la page d'accueil et la route "/"</li>
+    <li>La vue associée à la page d'accueil</li>
+    <li>Une page de contact avec une route "/contact" et une vue associée</li>
+    <li>Testez vos routes et vos vues, ajoutez un contenu fictif simple pour le moment avec uniquement du HTML.</li>
+</ul>
 
-Les premières étapes consistent à mettre en place les bases de notre projet :
-
-* Une nouvelle installation de Symfony, pour un projet nommé blog
-    * On installera toutes les dépendances en une seule fois pour plus de confort : `composer require webapp`dans le dossier blog/
-* Un contrôleur et la méthode pour la page d'accueil et la route "/"
-* La vue associée à la page d'accueil
-* Une page de contact avec une route "/contact" et une vue associée
-* Testez vos routes et vos vues, ajoutez un contenu fictif simple pour le moment avec uniquement du HTML comme vous savez le faire depuis le S1.
+</div>
 
 ----
 
@@ -236,13 +248,17 @@ Les premières étapes consistent à mettre en place les bases de notre projet :
 
 Un template ou une vue est le meilleur moyen d'organiser et de restituer le code HTML à partir de votre application, que vous deviez rendre le code HTML à partir d'un contrôleur ou générer le contenu d'un courrier électronique . Les templates dans Symfony sont créés avec Twig: un moteur de modèle flexible, rapide et sécurisé.
 
+----
+
+## Les vues/templates
+
 [Twig](https://twig.symfony.com/) est un moteur de rendu de template comme [Smarty](https://www.smarty.net/) (prestashop) ou [Blade](https://laravel.com/docs/5.8/blade) (laravel). Twig a cependant été développé pour Symfony à l'origine et peut être utilisé dans d'autres contextes.
 
 Les vues sont des fichiers HTML qui sont compilés par Symfony pour être envoyés au navigateur. Elles sont stockées dans le dossier `templates` et sont généralement organisées par contrôleur.
 
-{% hint style="info" %}
-Un moteur de template permet de limiter les logiques complexes pour réaliser des templates simples à coder. Un moteur de template intègre généralement des fonctionnalités qui sont récurrentes dans le développement "front" et qui permettent de simplifier le code à écrire.
-{% endhint %}
+
+Note: Un moteur de template permet de limiter les logiques complexes pour réaliser des templates simples à coder. Un moteur de template intègre généralement des fonctionnalités qui sont récurrentes dans le développement "front" et qui permettent de simplifier le code à écrire.
+
 
 ----
 
@@ -250,7 +266,7 @@ Un moteur de template permet de limiter les logiques complexes pour réaliser de
 
 Twig est le moteur de template par défaut de Symfony. Il permet de faire des boucles, des conditions, des inclusions, des héritages, des filtres, des fonctions, etc. Il est très complet et permet de faire des choses très puissantes. Twig est un langage à part entière, mais il est très simple à apprendre et à utiliser. Twig s'intègre dans le code HTML, il sera ensuite interprété par le moteur Symfony pour générer la page HTML finale.
 
-Twig est un outil très puissant, mais il implique une courte phase d'apprentissage, car contrairement à d'autres moteurs de template il n'utilise pas une syntaxe PHP. Vous pouvez vous référer à la documentation officielle : <https://twig.symfony.com/doc/3.x/>
+Note: Twig est un outil très puissant, mais il implique une courte phase d'apprentissage, car contrairement à d'autres moteurs de template il n'utilise pas une syntaxe PHP. Vous pouvez vous référer à la documentation officielle : <https://twig.symfony.com/doc/3.x/>
 
 ----
 
@@ -302,14 +318,6 @@ La syntaxe Twig est basée sur uniquement trois constructions:
 * `{{ ... }}`, utilisé pour afficher le contenu d'une variable ou le résultat de l'évaluation d'une expression;
 * `{% ... %}`, utilisé pour exécuter une logique, telle qu’une condition ou une boucle;
 * `{# ... #}`, utilisé pour ajouter des commentaires au modèle (contrairement aux commentaires HTML, ces commentaires ne sont pas inclus dans la page rendue).
-
-{% hint style="danger" %}
-Vous ne pouvez pas exécuter de code PHP dans les modèles Twig, mais Twig fournit des utilitaires permettant d'exécuter une certaine logique dans les modèles. Par exemple, les **filtres** modifient le contenu avant le rendu, comme le `upper`filtre pour mettre le contenu en majuscule :
-
-`{{ title|upper }}`
-
-Twig intègre une [liste de filtre](https://twig.symfony.com/doc/2.x/) permettant de répondre aux usages courant. Mais il est très simple d'ajouter nos propres filtres afin de répondre parfaitement à nos besoins.
-{% endhint %}
 
 
 ----
@@ -444,13 +452,18 @@ Vous pouvez utiliser cette fonction pour inclure des fichiers CSS ou JavaScript 
 
 ----
 
-### Tests
+### Conditions
 
-Il est possible d'écrire des tests, la syntaxe est très proche de celle de PHP. Attention toutefois, les opérateurs de comparaison ne s'écrive pas de manière identique.
+Il est possible d'écrire des conditions, la syntaxe est très proche de celle de PHP. 
+Attention toutefois, les opérateurs de comparaison ne s'écrive pas de manière identique.
 
 Le && de PHP s'écrit "and" dans TWIG, et le || de PHP s'écrit "or" dans TWIG.
 
 Il est possible d'avoir des *elseif* (autant que nécessaire) et un bloc *else* (1 au maximum)
+
+----
+
+### Exemples
 
 ```twig
 {% if condition %}
@@ -488,8 +501,8 @@ La boucle ci-dessous est une boucle qui parcours une "collection" users (l'équi
 </ul>
 ```
 
-----
 
+Note:
 Dans le cadre d'une boucle TWIG propose une variable nommée loop qui permet d'avoir des informations sur la boucle :
 
 | Variable       | Description                                                   |
@@ -505,7 +518,7 @@ Dans le cadre d'une boucle TWIG propose une variable nommée loop qui permet d'a
 
 ----
 
-La boucle ci-dessous intègre un test. Ce qui simplifie l'écriture. Elle intègre également un else dans le cas ou la boucle ne ferait aucune itération. Il est possible d'utiliser le else sans le if et réciproquement.
+La boucle ci-dessous intègre une test. Ce qui simplifie l'écriture. Elle intègre également un else dans le cas ou la boucle ne ferait aucune itération. Il est possible d'utiliser le else sans le if et réciproquement.
 
 ```twig
 <ul>
@@ -517,9 +530,11 @@ La boucle ci-dessous intègre un test. Ce qui simplifie l'écriture. Elle intèg
 </ul>
 ```
 
+----
+
 Le code ci-dessus serait équivalent en PHP au code suivant:
 
-----
+
 
 ```php
 <?php
@@ -546,6 +561,8 @@ else {
 * Construire un tableau PHP contenant 3 articles, contenant chacun un titre, un texte et une date
 * Passer le tableau à la vue de la page article.
 * Afficher le tableau en twig
+
+----
 
 Exemple de tableau PHP
 

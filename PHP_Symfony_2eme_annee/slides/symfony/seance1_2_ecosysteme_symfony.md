@@ -5,9 +5,7 @@
   Tanguy Bernard
 </p>
 
-
-
----
+----
 
 ## Crédits
 
@@ -20,8 +18,7 @@ Ce cours est adapté à partir du travail original de<br>
 Lien : <a href="https://cours.davidannebicque.fr/symfony/symfony-6-lp/lp/eco-systeme" target="_blank" rel="noopener">https://cours.davidannebicque.fr/symfony/symfony-6-lp/lp/eco-systeme</a>
 </p>
 
-
----
+----
 
 ## Symfony - Eco-système
 
@@ -31,20 +28,26 @@ Symfony nécessite tout un environnement pour fonctionner. Symfony implique auss
 
 ### Composer
 
-[*Composer*](https://getcomposer.org/) est un logiciel **gestionnaire de dépendances** libre écrit en PHP. Il permet à ses utilisateurs de déclarer et d'installer les bibliothèques dont le projet principal a besoin. Développé, depuis 2011, par Nils Adermann et Jordi Boggiano (qui continuent encore aujourd'hui à le maintenir), il est aujourd'hui en version 2.
+[*Composer*](https://getcomposer.org/) est un logiciel **gestionnaire de dépendances** libre écrit en PHP. 
+
+Note:
+Il permet à ses utilisateurs de déclarer et d'installer les bibliothèques dont le projet principal a besoin. Développé, depuis 2011, par Nils Adermann et Jordi Boggiano (qui continuent encore aujourd'hui à le maintenir), il est aujourd'hui en version 2.
 
 Le logiciel *Composer* trouve son équivalent pour le front avec *npm* ou *Yarn*
 
 ----
 
-### ENTITÉ (EQ. DU MODÈLE)
 
+### ENTITÉ (EQ. DU MODÈLE)
+<!-- 
 Une *entité* est une classe PHP ! Elle peut faire le lien avec une base de données, on y déclare les différentes propriétés accessibles; Symfony utilise par défaut un outil de persistence de données : [*Doctrine*](https://www.doctrine-project.org/index.html) pour lier une entité à une table de base de données.
+-->
 
 ----
 
 ### ORM : OBJECT RELATIONNAL MAPPING
 
+Note:
 Système permettant de se libérer des requêtes pour la base de données. Il se charge de générer les requêtes à effectuer sur les Entités spécifiées. Il existe plusieurs ORM, dans Symfony, il s'agit de [*Doctrine*](https://www.doctrine-project.org/index.html).
 
 ----
@@ -69,7 +72,10 @@ Commentaire PHP directement dans les classes utiles (controller, entité, ...) i
 
 ### Attributes
 
-Les *Attributes* sont la nouvelle version des annotations, intégrés nativement dans les versions 8 et supérieures de PHP. Les *Attributes* sont une forme de données structurées, qui permet d'ajouter des métadonnées à nos déclarations de classes, propriétés, méthodes, fonctions, paramètres et constantes. Ils vont nous permettre de définir de la configuration au plus près du code, directement sur nos déclarations.
+Les *Attributes* sont la nouvelle version des annotations, intégrés nativement dans les versions 8 et supérieures de PHP. 
+
+Note:
+Les *Attributes* sont une forme de données structurées, qui permet d'ajouter des métadonnées à nos déclarations de classes, propriétés, méthodes, fonctions, paramètres et constantes. Ils vont nous permettre de définir de la configuration au plus près du code, directement sur nos déclarations.
 
 ----
 
@@ -92,6 +98,7 @@ Symfony propose par défaut 2 environnements : *dev* et *prod* qui permettent de
 * dev permet une utilisation sans cache avec des outils de dev comme le profiler ;
 * prod lui permet d'utiliser le site avec le cache et sans aucun message d'erreurs.
 
+Note:
 De plus on peut configurer les différents environnements pour par exemple rediriger tous les mails vers <toto@titi.com> en dev et laisser le fonctionnement normal pour prod ; pratique pour les debugs.
 
 ----

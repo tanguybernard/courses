@@ -2188,3 +2188,40 @@ $notesWidthPercent: 25%;
 @import 'print/pdf.scss';
 @import 'print/paper.scss';
 
+
+/* Slide d'intro moderne, centrée verticalement et horizontalement */
+.intro-slide {
+	display: flex !important;
+	flex-direction: column;
+	justify-content: center; /* centre verticalement */
+	align-items: center;     /* centre horizontalement */
+	text-align: center;
+	min-height: 100%;        /* prend toute la hauteur de la slide */
+}
+
+/* Titre avec ligne décorative */
+.intro-slide h1 {
+	font-size: 2.8em;
+	margin-bottom: 15px;
+	color: #ffffff;
+	position: relative;
+}
+
+/* Ligne décorative sous le titre */
+.intro-slide h1::after {
+	content: "";
+	width: 180px;
+	height: 4px;
+	background: #007bff; /* couleur personnalisable */
+	display: block;
+	margin: 12px auto 0;
+	border-radius: 4px;
+}
+
+/* Sous-titre / description */
+.intro-slide p {
+	font-size: 1.35em;
+	color: rgba(255, 255, 255, 0.85);
+	max-width: 700px;
+}
+

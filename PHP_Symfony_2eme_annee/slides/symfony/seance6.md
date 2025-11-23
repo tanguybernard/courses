@@ -1,4 +1,9 @@
-# Séance 6 : Relations entre entités
+## Séance 6 : Relations entre entités
+
+
+<p style="text-align:center; color:gray;">
+  Tanguy Bernard
+</p>
 
 ----
 
@@ -43,6 +48,8 @@ Il existe également une notion très importante dans ces relations : **proprié
 
 Dans une relation entre deux entités, il y a toujours une entité dite propriétaire, et une dite inverse. L'entité propriétaire est celle qui contient la référence à l'autre entité.
 
+----
+
 Prenons un exemple simple, les commentaires de nos annonces. En SQL pur, vous disposez de la *tablecomment* et de la *tableadvert*. Pour créer une relation entre ces deux tables, vous allez mettre naturellement une colonne *advert\_id* dans la *tablecomment*. La *tablecomment* est donc propriétaire de la relation, car c'est elle qui contient la colonne de liaison *advert\_id*.
 
 ----
@@ -51,6 +58,8 @@ Prenons un exemple simple, les commentaires de nos annonces. En SQL pur, vous di
 
 Enfin, une relation peut être unidirectionnelle ou bidirectionnelle. Les relations bidirectionnelles peuvent être gérées automatiquement par Symfony modifiant un peu les entités inverses avec *inversedBy* et *mappedBy*.
 
+----
+
 Dans le cas d'une relation bidirectionnelle, il faut aussi explicité la relation dans l'entité inverse. La relation bidirectionnelle permet de faciliter la recherche d'élement en partant de l'inverse (Article vers Commentaires).
 
 ----
@@ -58,6 +67,8 @@ Dans le cas d'une relation bidirectionnelle, il faut aussi explicité la relatio
 ## RELATION 1..N (ONETOMANY) ET N..1 (MANYTOONE)
 
 La relation 1..n définit une dépendance multiple entre 2 entités de sorte que la première peut être liée à plusieurs entités
+
+----
 
 Prenons l'exemple des étudiants et des absences. Un étudiant peut avoir plusieurs (many) absences, mais une absence n'est associée qu'a un (one) seul étudiant.
 
@@ -78,6 +89,8 @@ private $etudiant;
 ...
 }
 ```
+
+----
 
 Le code précédent est le minimum pour définir une relation.
 
@@ -157,7 +170,11 @@ Cette relation va créer une nouvelle table, contenant les deux clés étrangèr
 
 La console (`make:entity`), nous facilite la création des relations. En créant ou en modifiant l'entité, il est possible d'ajouter le champs contenant la relation. Pour cela le type sera **"relation"**. La console vous demandera de préciser l'entité liée, ainsi que le type de relation. Vous pourrez ensuite selon la relation choisie, préciser la relation inverse, de manière optionnelle ou obligatoire.
 
+----
+
 **Attention, il est d'usage de lancer la console dans l'entité qui porte la relation (propriétaire), ou l'entité qui recevra la clé étrangère.**
+
+----
 
 ```bash
 php bin/console make:entity
@@ -203,6 +220,9 @@ Comme après chaque modification, il faudra générer le fichier de migration, e
 
 ## Exercice
 
+<div style="max-height: 400px; overflow-y: auto; border: 1px solid #ccc; padding: 10px; font-size: 0.8em;">
+
+
 * Créer la liaison entre `Article` et `Categorie`.&#x20;
 * Ajoutez deux catégories dans votre base de données et liées vos articles à l'une des catégories.
 * Modifiez la page "/articles", pour afficher la catégorie de chacun des articles.
@@ -215,3 +235,5 @@ Comme après chaque modification, il faudra générer le fichier de migration, e
       qui recherchera dans le titre et le contenu le mot $word&#x20;
 
       Tips : <https://symfony.com/doc/current/doctrine.html#querying-for-objects-the-repository>
+
+</div>

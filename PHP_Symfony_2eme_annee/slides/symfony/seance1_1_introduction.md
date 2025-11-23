@@ -1,6 +1,12 @@
-# Séance 1 : Introduction
+# Symfony
 
----
+<p style="text-align:center; color:gray;">
+  Tanguy Bernard
+</p>
+
+
+
+----
 
 
 ## Crédits
@@ -15,13 +21,13 @@ Lien : <a href="https://cours.davidannebicque.fr/symfony" target="_blank" rel="n
 </p>
 
 
----
+----
 
 ## Présentation
 
 Découvrir et appréhender un framework PHP web.
 
----
+----
 
 ## Pré-requis
 
@@ -30,7 +36,7 @@ Découvrir et appréhender un framework PHP web.
 * Structure MVC
 * Base de données
 
----
+----
 
 ## Rappels des concepts du MVC
 
@@ -54,7 +60,7 @@ C'est lui qui apporte la réponse (**response/render**) au visiteur. Une vue peu
 
 C'est lui qui s'occupe de récupérer et préparer les données. Le modèle peut être en lien avec une base de données. Le modèle peut être en lien avec des API. Le modèle prépare les données pour qu'elles soient facilement manipulables par la vue.
 
----
+----
 
 ## Notion de Framework
 
@@ -76,7 +82,7 @@ Le cadre de travail (traduction littérale de l’anglais : *framework*) qu’i
 
 ## Symfony
 
-<img src="./symfony/assets/symfony_logo.png" width="600" height="200" />
+<img src="./assets/symfony_logo.png" width="600" height="200" />
 
 ----
 
@@ -95,14 +101,14 @@ Le cadre de travail (traduction littérale de l’anglais : *framework*) qu’i
 * Moteur de template puissant et simple
 * Depuis la V4, Symfony est très léger et très rapide
 
-<img src="./symfony/assets/symfony_release_calendar.png" width="500" height="300" />
+<img src="./assets/symfony_release_calendar.png" width="500" height="300" />
 
 
 
 Note:
 https://symfony.com/releases
 
----
+----
 
 ### Symfony V4 : Un retour aux bases
 
@@ -110,16 +116,22 @@ Avec sa version 4 (et suivante), Symfony à pris un virage important par rapport
 
 ----
 
-#### SKELETON ET FLEX
+#### SKELETON
 
 La version **Skeleton** de Symfony : Apporte un framework Symfony très léger, avec le minimum pour faire fonctionner un controller.
 
-La version 4 de Symfony introduit Flex qui est un gestionnaire de "recipes" (recettes), qui permet l'ajout de fonctionnalité à Symfony (gestionnaire de vue, de base de données, d'email, ...) avec un mécanisme d'auto-configuration de ces "bundles". Cela permet donc de fournir par défaut un framework très léger, avec une grande facilité pour lui ajouter tous les composants nécessaires, sans en mettre plus que nécessaire.
-
+Note:
 Par défaut Symfony version Skeleton ne sais rien faire ! Par contre, il n'embarque pas des dizaines de Bundles dont vous n'aurez peut être jamais besoin (fonctionnement des versions 2 et 3 avec plus de 46 bundles par défaut, contre 10 aujourd'hui).
 
-Grâce à Flex vous installez rapidement le nécessaire pour répondre à votre projet.
 
+----
+
+#### FLEX
+
+La version 4 de Symfony introduit Flex qui est un gestionnaire de "recipes" (recettes), qui permet l'ajout de fonctionnalité à Symfony (gestionnaire de vue, de base de données, d'email, ...) avec un mécanisme d'auto-configuration de ces "bundles". 
+
+Note:
+Cela permet donc de fournir par défaut un framework très léger, avec une grande facilité pour lui ajouter tous les composants nécessaires, sans en mettre plus que nécessaire.
 
 ----
 
@@ -129,21 +141,3 @@ Avec sa version 5 (et suivante), Symfony continue sa simplification en facilitan
 
 Note:
 Une lecture intéressante sur la logique d'évolution du framework Symfony : <https://www.disko.fr/reflexions/technique/symfony-4-4-5-0-les-nouveautes-venir/>
-
-
-
-----
-
-## Installations (SF6)
-
-### Configuration requise pour votre serveur
-
-* Un serveur Web
-* PHP 8.1 ou supérieur
-* [Git (différent de GitHub)](https://git-scm.com/)
-* Le gestionnaire de dépendance [Composer](https://getcomposer.org/)
-* ou Le nouveau gestionnaire d'installation de Symfony : <https://symfony.com/download>
-* Une maîtrise de son système d'exploitation ! (fichiers cachés, variables PATH, php.ini, console...)
-
-Note:
-Vous pouvez suivre aussi les éléments de la documentation officielle : <https://symfony.com/doc/current/setup.html>
