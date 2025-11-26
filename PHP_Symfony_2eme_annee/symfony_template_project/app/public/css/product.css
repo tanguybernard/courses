@@ -98,3 +98,33 @@ tr:hover {
     padding: 20px;
     color: #777;
 }
+
+
+/* AJOUTS POUR STYLISER TEXTAREA et SELECT (Commentaires) */
+
+textarea,
+select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 15px;
+    background: #fafafa;
+    /* Assure que la hauteur et largeur incluent padding et border */
+    box-sizing: border-box;
+    /* Utilise la même police que le reste */
+    font-family: inherit;
+    resize: vertical; /* Permet le redimensionnement vertical pour le contenu */
+    min-height: 100px; /* Donne une hauteur de base au textarea */
+}
+
+textarea:focus,
+select:focus {
+    outline: none;
+    border-color: #888;
+    background: #fff;
+}
+
+.form-row {
+    margin-bottom: 15px;
+}

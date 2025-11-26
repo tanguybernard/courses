@@ -1,0 +1,115 @@
+/* =======================================
+   Styles Spécifiques pour product/show.html.twig
+   (Formulaire de commentaire et Liste des avis)
+   ======================================= */
+
+/* --- Rendu des champs de formulaire de commentaire --- */
+
+/* Appliquer les styles des inputs de base aux textarea et select pour l'uniformité */
+.card textarea,
+.card select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 15px;
+    background: #fafafa;
+
+    /* Assure que la hauteur et largeur incluent padding et border */
+    box-sizing: border-box;
+    font-family: inherit;
+    resize: vertical;
+}
+
+.card textarea {
+    min-height: 100px; /* Donne une hauteur visible par défaut */
+}
+
+/* Style de focus pour tous les champs à l'intérieur de la carte */
+.card input:focus,
+.card textarea:focus,
+.card select:focus {
+    outline: none;
+    border-color: #888;
+    background: #fff;
+}
+
+/* Espacement entre les groupes de champs du formulaire */
+.form-group {
+    margin-bottom: 15px;
+}
+
+/* --- Styles des commentaires affichés --- */
+
+/* Carte individuelle de commentaire pour la lisibilité */
+.comment-card {
+    border: 1px solid #e0e0e0;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 6px;
+    background-color: #fcfcfc;
+    position: relative;
+}
+
+.comment-card p {
+    margin: 5px 0;
+}
+
+.comment-card small {
+    display: block;
+    color: #777;
+    margin-top: 10px;
+    font-size: 12px;
+}
+
+/* Bouton de suppression de commentaire */
+.btn-delete {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 6px 12px;
+    background: #dc3545; /* Rouge pour la suppression (si non défini dans app.css) */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background 0.2s ease;
+    width: auto !important; /* Annule l'éventuel width: 100% hérité */
+}
+
+.btn-delete:hover {
+    background: #c82333;
+}
+
+
+/* --- Styles pour les messages flash (si non dans app.css) --- */
+.alert {
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.alert-success {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+}
+.alert-error, .alert-danger {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}
+
+
+.comment-date {
+    /* Rendre le texte petit */
+    font-size: 0.8em; /* 80% de la taille de police normale */
+
+    /* Rendre le texte gris */
+    color: #6c757d; /* Un gris standard, vous pouvez ajuster la nuance */
+
+    /* Optionnel : Rendre la police plus légère */
+    font-weight: 300;
+}

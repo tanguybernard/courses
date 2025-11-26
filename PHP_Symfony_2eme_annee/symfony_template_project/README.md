@@ -57,7 +57,7 @@ Création de la base :
 Création d'une entité liée à une table
 
 
-    php bin/console make:entity
+    php bin/console make:entity Product
 
 Création de la migration pour le Product
 
@@ -80,3 +80,18 @@ Execution de la migration
 Dans src/Form un fichier ProductType.php est créé
 
 
+## ManyToOne
+
+
+    php bin/console make:entity Comment
+
+Ajouter les annotations aux Comment et Product
+
+
+Générer le fichier de migration
+
+    php bin/console make:migration
+
+Appliquer la migration
+
+    php bin/console doctrine:migrations:migrate

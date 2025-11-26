@@ -1,0 +1,24 @@
+{# templates/product/_comments_list.html.twig #}
+
+<h2>Commentaires ({{ product.comments|length }})</h2>
+
+{% for comment in product.comments|reverse %} {# Afficher du plus récent au plus ancien #}
+    <div class="card comment-card">
+
+        <p>{{ comment.content|nl2br }}</p>
+        <p class="comment-date">
+            Posté le
+            <time datetime="{{ comment.createdAt|date('c') }}">
+                {{ comment.createdAt|date('d F Y à H:i') }}
+            </time>
+        </p>
+
+        {# Bouton de suppression #}
+        <form method="POST" action="{{ path('comment_delete', {'id': comment.id}) }}" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ce commentaire ?');" style="display:inline;">
+            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ comment.id) }}">
+            <button type="submit" class="btn-delete">Supprimer</button>
+        </form>
+    </div>
+{% else %}
+    <p>Soyez le premier à laisser un commentaire !</p>
+{% endfor %}

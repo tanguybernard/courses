@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Détail du produit : {{ product.name }}{% endblock %}
+
+{% block stylesheets %}
+    {# Chargez le CSS général des produits #}
+    <link rel="stylesheet" href="{{ asset('css/product.css') }}">
+    {# Chargez le CSS spécifique à cette vue (la partie "show") #}
+    <link rel="stylesheet" href="{{ asset('css/product_show.css') }}">
+{% endblock %}
+
+
+{% block body %}
+<div class="container">
+
+    {# 1. AFFICHAGE DES FLASH MESSAGES #}
+    {% include 'base/_flash_messages.html.twig' %}
+
+    <a href="{{ path('product_index') }}">&leftarrow; Retour à la liste des produits</a>
+
+    <h1>{{ product.name }}</h1>
+    <p>Prix : **{{ product.price }} €**</p>
+
+    <hr>
+
+    {# 2. FORMULAIRE D'AJOUT DE COMMENTAIRE #}
+    <h2>Ajouter un commentaire</h2>
+
+    <div class="card comment-form-card">
+        {{ form_start(commentForm, {'action': path('comment_new', {'id': product.id})}) }}
+
+        {# CORRECTION : Utilisation de form_row avec row_attr pour appliquer la classe CSS #}
+
+        {# Champ "author" (Text) #}
+        {{ form_row(commentForm.author, {
+            'row_attr': {'class': 'form-group'}
+        }) }}
+
+        {# Champ "content" (Textarea) #}
+        {{ form_row(commentForm.content, {
+            'row_attr': {'class': 'form-group'}
+        }) }}
+
+        <button type="submit">Poster le commentaire</button>
+    {{ form_end(commentForm) }}
+</div>
+
+<hr>
+
+{# 3. AFFICHAGE DE LA LISTE DES COMMENTAIRES (via include) #}
+{% include 'product/_comments_list.html.twig' with {'product': product} %}
+
+</div>
+{% endblock %}
