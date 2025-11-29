@@ -25,8 +25,6 @@ Lien : <a href="https://cours.davidannebicque.fr/symfony" target="_blank" rel="n
 
 Depuis la version 4, Symfony à grandement simplifié la structure de ses répertoires et à normalisé les appellations pour coïncider avec la pratique de la majorité des framework.
 
-Symfony à également abandonné la notion de Bundle, qui était nécessaire pour développer son projet.
-
 ----
 
 ## Architecture globale
@@ -78,7 +76,8 @@ Tous ces points seront détaillés dans les parties suivantes.
 
 ## Principe général de fonctionnement de Symfony
 
-<figure><img src="https://1352327723-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FOlCPtqgEYET7rbnfjpAg%2Fuploads%2F3fsC7mRcSY0I8oCdexjD%2FCapture%20d%E2%80%99e%CC%81cran%202023-09-05%20a%CC%80%2021.54.00.png?alt=media&#x26;token=b2051ffd-4f4a-451e-a13e-0a028c293d58" alt=""><figcaption><p>Principe général de fonctionnement de Symfony (source : <a href="https://symfony.com/doc/current/introduction/http_fundamentals.html#the-symfony-application-flow">https://symfony.com/doc/current/introduction/http_fundamentals.html#the-symfony-application-flow</a>)</p></figcaption></figure>
+<figure><img src="https://1352327723-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FOlCPtqgEYET7rbnfjpAg%2Fuploads%2F3fsC7mRcSY0I8oCdexjD%2FCapture%20d%E2%80%99e%CC%81cran%202023-09-05%20a%CC%80%2021.54.00.png?alt=media&#x26;token=b2051ffd-4f4a-451e-a13e-0a028c293d58" alt="">
+</figure>
 
 ----
 
@@ -241,4 +240,11 @@ Cette commande va générer un controller nommé "NomDuController" (dans src/con
 
 Note:
 Pour ajouter d'autres méthodes, vous devrez le faire directement dans le controller, le maker ne permet pas d'en ajouter dans un fichier existant.
+
+
+----
+
+## Exercice
+
+Mise en place du projet !
 

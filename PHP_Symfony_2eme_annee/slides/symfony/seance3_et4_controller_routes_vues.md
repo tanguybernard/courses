@@ -229,11 +229,7 @@ Note: Ici on va récupérer le template présent dans templates/default/index.ht
 <h3>Exercice 1</h3>
 <p>Les premières étapes consistent à mettre en place les bases de notre projet :</p>
 <ul>
-    <li>Une nouvelle installation de Symfony, pour un projet nommé <strong>blog</strong>
-        <ul>
-            <li>On installera toutes les dépendances en une seule fois pour plus de confort : <code>composer require webapp</code> dans le dossier <strong>blog/</strong></li>
-        </ul>
-    </li>
+    <li>Une nouvelle installation de Symfony, pour un projet nommé <strong>blog</strong></li>
     <li>Un contrôleur et la méthode pour la page d'accueil et la route "/"</li>
     <li>La vue associée à la page d'accueil</li>
     <li>Une page de contact avec une route "/contact" et une vue associée</li>
