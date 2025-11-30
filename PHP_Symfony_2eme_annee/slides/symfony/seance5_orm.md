@@ -335,7 +335,7 @@ Exemple
 
 ```php
 // Modifications multiples : 
-#[Route("/est", name="test")]
+#[Route("/test", name="test")]
 public function test(
         EntityManagerInterface $entityManager,
         PostRepository $postRepository)

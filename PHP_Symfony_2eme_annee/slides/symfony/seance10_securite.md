@@ -298,12 +298,13 @@ bin/console doctrine:migrations:migrate
 
 ----
 
-## Créer la partie connexion
+## (NEW) Créer l'Authentification par Formulaire de Connexion
 
-Une nouvelle fois la console va nous permettre de dégrossir le travail et produire le contrôleur, le fichier de configuration et le formulaire de connexion.
+L'instruction *bin/console make:auth* est obsolète. 
+Pour créer l'ensemble du mécanisme de connexion par formulaire dans les versions modernes de Symfony, utilisez la commande *make:security:form-login*.
 
 ```
-bin/console make:auth
+bin/console make:security:form-login
 ```
 
 ----
@@ -311,12 +312,7 @@ bin/console make:auth
 Pour le résultat ci-dessous.
 
 ```bash
-bin/console make:auth                                                                                                    davidannebicque@MacBook-Pro-de-David-2
-
- What style of authentication do you want? [Empty authenticator]:
-  [0] Empty authenticator
-  [1] Login form authenticator
- > 1
+bin/console make:security:form-login
 
  The class name of the authenticator to create (e.g. AppCustomAuthenticator):
  > LoginAuthenticator
@@ -335,12 +331,11 @@ bin/console make:auth                                                           
            
   Success! 
            
-
  Next:
  - Customize your new authenticator.
  - Finish the redirect "TODO" in the App\Security\LoginAuthenticator::onAuthenticationSuccess() method.
  - Review & adapt the login template: templates/security/login.html.twig.
-```
+ ```
 
 ----
 
@@ -753,7 +748,7 @@ Attention ! On modifie le docker-compose.yaml MMI pas celui de Symfony !!!
 
 La aussi le maker peut nous aider grandement...
 
-`bin/console make:registration`
+`php bin/console make:registration-form`
 
 Répondez aux questions, il est nécessaire d'installer un complément si vous voulez vérifier le mail de vos utilisateurs : `composer require symfonycasts/verify-email-bundle`
 
