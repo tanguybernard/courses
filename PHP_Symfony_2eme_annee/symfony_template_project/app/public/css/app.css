@@ -33,6 +33,18 @@ body {
     font-weight: 600;
 }
 
+.site-title a {
+    /* 1. Suppression du soulignement par défaut des liens */
+    text-decoration: none;
+
+    /* 2. Changer la couleur du lien */
+    color: inherit;
+
+    /* 3. S'assurer que le style de la police hérite du H1 */
+    font-size: inherit;
+    font-weight: inherit;
+}
+
 /* ------ LAYOUT ------ */
 
 .container {

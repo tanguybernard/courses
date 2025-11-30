@@ -12,7 +12,16 @@
 
         <header class="header">
             <div class="header-inner">
-                <h1 class="site-title">Mon Application</h1>
+                <h1 class="site-title">
+                    {# Logique conditionnelle pour choisir la route de destination #}
+                    {% if is_granted('ROLE_ADMIN') %}
+                        {# Si l'utilisateur a le rôle ROLE_ADMIN, on le dirige vers le dashboard admin #}
+                        <a href="{{ path('app_admin') }}">Mon Application</a>
+                    {% else %}
+                        {# Sinon (s'il est connecté mais n'est qu'un ROLE_USER ou autre), on le dirige vers le dashboard normal #}
+                        <a href="{{ path('app_dashboard') }}">Mon Application</a>
+                    {% endif %}
+                </h1>
 
                 {% if app.user %}
                     <div class="user-info">
