@@ -38,6 +38,9 @@ security:
         - { path: ^/login, roles: PUBLIC_ACCESS }
         - { path: ^/register, roles: PUBLIC_ACCESS }
         - { path: ^/lucky/number, roles: PUBLIC_ACCESS }
+        - { path: ^/paslucky/number, roles: PUBLIC_ACCESS }
+        - { path: ^/paslucky/number2, roles: PUBLIC_ACCESS }
+        - { path: ^/contact, roles: PUBLIC_ACCESS }
 
         # Tout le reste = connexion obligatoire
         - { path: ^/, roles: ROLE_USER }

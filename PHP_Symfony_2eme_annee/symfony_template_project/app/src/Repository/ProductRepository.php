@@ -16,6 +16,11 @@ class ProductRepository extends ServiceEntityRepository
         parent::__construct($registry, Product::class);
     }
 
+    public function sauvegarderProduit(Product $product){
+        $this->getEntityManager()->persist($product);
+        $this->getEntityManager()->flush();
+    }
+
     //    /**
     //     * @return Product[] Returns an array of Product objects
     //     */

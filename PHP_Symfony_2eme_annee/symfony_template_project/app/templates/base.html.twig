@@ -21,7 +21,12 @@
                         {# Sinon (s'il est connecté mais n'est qu'un ROLE_USER ou autre), on le dirige vers le dashboard normal #}
                         <a href="{{ path('app_dashboard') }}">Mon Application</a>
                     {% endif %}
+                    <div style="display: inline-block; margin-left: 10px;">
+                    </div>
+                    <a href="{{ path('app_contact') }}">Contact</a>
+
                 </h1>
+
 
                 {% if app.user %}
                     <div class="user-info">
