@@ -280,25 +280,54 @@ DATABASE_URL="mysql://root:123456@mariadb:3306/nomDeLaBDD?charset=utf8mb4"
 
 
 <ul>
-    <li>Créer la base de données (<code>bin/console doctrine:database:create</code>)</li>
-    <li>Créer une entité (<code>bin/console make:entity</code>), nommée <strong>Categorie</strong> et ajouter les champs suivants :
-        <ul>
-            <li><strong>titre</strong> : string, 150 caractères</li>
-            <li><strong>ordre</strong> : int</li>
-        </ul>
-    </li>
-    <li>L'id sera automatiquement ajouté</li>
-    <li>Créer un nouveau contrôleur nommé <strong>CategorieTestController</strong></li>
-    <li>Ajouter une route pour créer un nouvel enregistrement :
-        <ul>
-            <li>Créer un objet <code>Categorie</code> et compléter les informations (titre, ordre)</li>
-            <li>Récupérer la connexion à doctrine (<code>$em = $this->getDoctrine()->getManager()</code>)</li>
-            <li>Associer l'instance de Categorie avec l'ORM (<code>$em->persist($categorie)</code>)</li>
-            <li>Enregistrer dans la base de données (<code>$em->flush()</code>)</li>
-        </ul>
-    </li>
-    <li>Appeler la route et vérifier que cela s'enregistre dans votre base de données</li>
-    <li>Essayer d'appeler la route plusieurs fois.</li>
+    <li>Config dans .env : DATABASE_URL="mysql://root@localhost:3306/blog"</li>
+<li>Créer la base de données : 
+
+      php bin/console doctrine:database:create
+
+</li>
+<li>Créer une entité 
+  
+    php bin/console make:entity
+
+nommée <strong>Categorie</strong> et ajouter les champs suivants :
+    <ul>
+        <li><strong>titre</strong> : string, 150 caractères</li>
+        <li><strong>ordre</strong> : int</li>
+    </ul>
+</li>
+<li>
+Création de la migration : 
+
+    php bin/console make:migration
+</li>
+<li>
+Execution de la migration :
+
+    php bin/console doctrine:migrations:migrate
+</li>
+<li>L'id sera automatiquement ajouté</li>
+<li>Créer un nouveau contrôleur nommé <strong>CategorieTestController</strong></li>
+<li>Ajouter une route pour créer un nouvel enregistrement :
+<ul>
+<li>Créer un objet <code>Categorie</code> et compléter les informations (titre, ordre)</li>
+<li>
+Récupérer la connexion à doctrine 
+
+    $em = $this->getDoctrine()->getManager()
+
+</li>
+<li>
+Associer l'instance de Categorie avec l'ORM
+
+    $em->persist($categorie)
+
+</li>
+<li>Enregistrer dans la base de données (<code>$em->flush()</code>)</li>
+</ul>
+</li>
+<li>Appeler la route et vérifier que cela s'enregistre dans votre base de données</li>
+<li>Essayer d'appeler la route plusieurs fois.</li>
 </ul>
 </div>
 
