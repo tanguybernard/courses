@@ -1,19 +1,7 @@
 
+## 📅 Le Programme Détaillé (5 Jours)
 
-
-
-
-
-### 📦 Le Scénario : "Pixel Trader V2.0"
-
-**Le Pitch :** Kenji, le patron, ne s'en sort plus avec ses fichiers Excel. Il perd de l'argent car il ne sait pas ce qu'il a en stock, ni la valeur totale de sa boutique.
-**Votre Mission :** Développer le **Back-Office Administrateur** (Dashboard) qui servira d'outil de travail quotidien pour les employés de la boutique.
-
----
-
-### 📅 Le Programme Détaillé (5 Jours)
-
-#### JOUR 1 : Audit de Données & Git Flow (Le Nettoyage)
+### JOUR 1 : Audit de Données & Git Flow (Le Nettoyage)
 
 * **Contexte Pro :** "Avant de construire, il faut déblayer le terrain." On récupère le fameux fichier CSV corrompu (celui que je t'ai donné plus haut).
 * **Objectifs Tech :** Git, Algorithmique de base (Parsing), Scripting.
@@ -32,7 +20,7 @@ Note :
 
 
 
-#### JOUR 2 : Architecture BDD (La Fondation)
+### JOUR 2 : Architecture BDD (La Fondation)
 
 * **Contexte Pro :** "Excel, c'est fini. On passe sur du solide."
 * **Objectifs Tech :** SQL, Modélisation (MCD), Relations (Clés étrangères).
@@ -43,7 +31,7 @@ Note :
 
 
 
-#### JOUR 3 : L'API REST (Le Moteur)
+### JOUR 3 : L'API REST (Le Moteur)
 
 * **Contexte Pro :** "Le Front et le Back sont deux équipes séparées. On communique via une API."
 * **Objectifs Tech :** Backend (Node/Express ou PHP/Slim), JSON, Codes HTTP.
@@ -61,7 +49,7 @@ Note :
 - Ils doivent valider avec moi la partie Postman
 
 
-#### JOUR 4 : Dashboard & UI (Le Tableau de Bord)
+### JOUR 4 : Dashboard & UI (Le Tableau de Bord)
 
 * **Contexte Pro :** "Kenji veut un outil efficace. Pas un site vitrine, un outil de travail."
 * **Objectifs Tech :** HTML5, CSS (Grid/Flex), JS (Fetch/Async Await), Manipulation du DOM.
@@ -77,7 +65,7 @@ Note :
 
 
 
-#### JOUR 5 : Recette & Déploiement (La Livraison)
+### JOUR 5 : Recette & Déploiement (La Livraison)
 
 * **Contexte Pro :** "Mise en production ce soir 17h."
 * **Objectifs Tech :** Debug, Sécurité basique, Hébergement.
