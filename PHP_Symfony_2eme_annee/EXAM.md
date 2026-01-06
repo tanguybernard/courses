@@ -56,14 +56,15 @@ Pour valider le module, votre application doit impérativement contenir les él�
 
 Pour assurer la transparence, voici comment vous serez évalués :
 
-| Critère | Détails                                                                               | Points |
-| :--- |:--------------------------------------------------------------------------------------| :--- |
-| **Architecture & BDD** | Entités correctes.                                                                    | **5 pts** |
-| **Fonctionnalités (CRUD)** | Création, Lecture, (Modification), Suppression                                        | **5 pts** |
-| **Formulaires** | Création formulaire et traitement en Controller.                                      | **4 pts** |
-| **Qualité du Code** | Code propre, nommage des variables, structure MVC respectée.                          | **3 pts** |
-| **Interface (Twig)** | Utilisation correcte des blocks, boucles, filtres.                                    | **2 pts** |
-| **Git / Travail d'équipe** | Commits, `README.md` clair.                                                           | **1 pt** |
+| Critère                    | Détails                                                      | Points    |
+|:---------------------------|:-------------------------------------------------------------|:----------|
+| **Architecture & BDD**     | Entités correctes.                                           | **4 pts** |
+| **Fonctionnalités (CRUD)** | Création, Lecture, (Modification), Suppression               | **4 pts** |
+| **Formulaires**            | Création formulaire et traitement en Controller.             | **3 pts** |
+| **Qualité du Code**        | Code propre, nommage des variables, structure MVC respectée. | **3 pts** |
+| **Interface (Twig)**       | Utilisation correcte des blocks, boucles, filtres.           | **2 pts** |
+| **Git / Travail d'équipe** | Commits, `README.md` clair.                                  | **2 pt**  |
+| **Presentation**           | Presentation                                                 | **2 pt**  |
 
 ---
 
