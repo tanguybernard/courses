@@ -23,9 +23,9 @@ Note :
 ### JOUR 2 : Architecture BDD (La Fondation)
 
 * **Contexte Pro :** "Excel, c'est fini. On passe sur du solide."
-* **Objectifs Tech :** SQL, Modélisation (MCD), Relations (Clés étrangères).
+* **Objectifs Tech :** SQL, Modélisation, Relations (Clés étrangères).
 * **Le Planning :**
-- Conception du MCD au tableau blanc.
+- Conception au tableau blanc.
 - Création de la base de données (MySQL/MariaDB ou SQLite).
 - Importer les données "propres" du Jour 1 dans cette nouvelle base SQL via un script d'insertion.
 

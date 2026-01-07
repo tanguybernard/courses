@@ -99,7 +99,13 @@ Le client exige une architecture moderne et maintenable ("Future-proof").
 📅 MARDI (BDD)
 [DB] Modélisation MCD (Schéma papier).
 
-[DB] Script SQL Init (CREATE TABLE games, platforms...).
+[DB] Script SQL Init (CREATE TABLE)
+
+On doit stocker en base les infos.
+- des produits
+- le stock
+- et permettre de connaître la marge qui va être réalisé sur la vente
+
 
 [DB] Script Seeding (Remplir la BDD avec le JSON).
 
