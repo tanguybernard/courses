@@ -34,8 +34,8 @@
 - Automatisation
     - Github Action (voir: .github/workflows/test-leap-year.yml)
 
-
-
+- Examen
+  - Quelle stratégie avez-vous choisie ? Outside In ? Inside Out ? Pourquoi ?
 
 
 ### Resources

@@ -92,9 +92,10 @@ Le client exige une architecture moderne et maintenable ("Future-proof").
 
 [DATA] Script de parsing CSV (Nettoyer les prix et devises).
 
-[DATA] Déduplication (Supprimer les doublons Mario/Sonic).
+[DATA] Export CSV et JSON (Générer clean_data.json et  clean_data.csv)
 
-[DATA] Export JSON (Générer clean_data.json).
+[DATA] Valider des données d'import CSV
+
 
 📅 MARDI (BDD)
 [DB] Modélisation MCD (Schéma papier).
