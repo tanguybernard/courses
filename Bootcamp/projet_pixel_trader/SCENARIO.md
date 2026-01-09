@@ -92,9 +92,11 @@ Le client exige une architecture moderne et maintenable ("Future-proof").
 
 [DATA] Script de parsing CSV (Nettoyer les prix et devises).
 
-[DATA] Export CSV et JSON (Générer clean_data.json et  clean_data.csv)
+[DATA] Export CSV (clean_data.csv)
 
-[DATA] Valider des données d'import CSV
+[DATA] Importer un CSV valide
+
+[DATA] Produire un rapport d'erreurs si le CSV est incorrect
 
 
 📅 MARDI (BDD)
