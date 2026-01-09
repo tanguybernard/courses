@@ -1,8 +1,4 @@
-Voici le contenu de l'article converti proprement au format Markdown (`.md`). J'ai nettoyé les éléments de navigation du site (menus, publicités, commentaires) pour ne garder que le cours, et j'ai formaté les blocs de code pour qu'ils soient lisibles.
 
----
-
-```markdown
 # Git par la pratique (11) – Gérer les conflits
 
 **Publié par kikinovak le 23 janvier 2023**

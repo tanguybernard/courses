@@ -1,197 +1,229 @@
-Voici un exercice **guidé pas à pas** sur le thème d'une **Playlist de soirée**.
 
-Le scénario : Vous et un ami essayez de modifier la même playlist en même temps, mais vous n'avez pas les mêmes goûts musicaux. Cela va créer un conflit en deux étapes lors du rebase.
+# 🎓 TP Git Avancé : Le Rebase Chirurgical
+
+### 🎯 Objectif
+
+Comprendre le **Git Rebase** et la **résolution de conflits logique**.
+Contrairement à un `merge` classique, le rebase réécrit l'histoire. Vous allez apprendre à gérer le cas le plus fréquent en entreprise : **Intégrer un correctif critique (Hotfix) tout en continuant votre travail de nettoyage (Refactoring).**
+
+### 📝 Le Scénario
+
+Vous êtes développeur sur une application de facturation.
+
+1. **Votre mission :** Le code actuel fonctionne mais il est "sale" (noms de variables illisibles). Vous devez le nettoyer.
+2. **L'imprévu :** Pendant que vous travaillez, une erreur critique est découverte dans le calcul de la TVA. Un correctif est déployé sur la branche principale.
+
+Vous allez devoir **rebaser** votre travail sur ce correctif. Attention : il ne s'agira pas de choisir "l'un ou l'autre", mais de fusionner intelligemment les deux !
 
 ---
 
-### Étape 1 : Installation du décor
+## Étape 1 : Mise en place du "Code Sale"
 
-On part de zéro. Créez le dossier et la playlist vide.
+Ouvrez votre terminal (Git Bash ou terminal VS Code). Nous allons simuler le projet existant.
+
+1. Créez le dossier et initialisez Git :
 
 ```bash
-# 1. Création du dossier
-mkdir rebase-playlist
-cd rebase-playlist
+mkdir rebase-tva
+cd rebase-tva
 git init
 
-# 2. Création de la playlist de base
-echo "Chanson 1: Calme" > playlist.txt
-echo "Chanson 2: Silence" >> playlist.txt
-echo "Chanson 3: Bruit blanc" >> playlist.txt
+```
 
-# 3. Validation
-git add playlist.txt
-git commit -m "Playlist de départ (ennuyeuse)"
+2. Créez le fichier `tva.py` avec le code initial (mauvais noms, ancienne TVA) :
+
+```bash
+# Copiez-collez ces 3 lignes d'un coup
+echo "p = 100" > tva.py
+echo "t = 1.10" >> tva.py
+echo "print(p * t)" >> tva.py
 
 ```
 
-### Étape 2 : Votre travail (Branche "Electro")
-
-Vous décidez de dynamiser la soirée. On crée votre branche immédiatement.
+3. Validez ce point de départ :
 
 ```bash
-# On crée la branche et on bascule dessus
-git switch -c electro
+git add tva.py
+git commit -m "Init: Calcul TVA (Code legacy)"
 
 ```
 
-Nous allons faire **2 commits** différents pour bien voir le rebase s'arrêter deux fois.
+---
 
-**Modification A (Ligne 1) :**
+## Étape 2 : Votre travail de nettoyage (Branche "clean-code")
+
+Vous décidez de rendre ce code plus lisible. Vous ne changez pas la logique, juste les noms.
+
+1. Créez votre branche et basculez dessus :
 
 ```bash
-# Remplacez la ligne 1
-sed -i 's/Calme/Daft Punk/' playlist.txt
-git commit -am "Ajout de Daft Punk en intro"
+git switch -c clean-code
 
 ```
 
-**Modification B (Ligne 3) :**
+2. **Modification A :** On renomme `p` en `prix_ht`.
+* Ouvrez `tva.py` et remplacez `p` par `prix_ht`.
+* Sauvegardez.
+* Validez :
+
 
 ```bash
-# Remplacez la ligne 3
-sed -i 's/Bruit blanc/Justice/' playlist.txt
-git commit -am "Ajout de Justice pour la fin"
+git commit -am "Refacto: Renommage p -> prix_ht"
 
 ```
 
-> **État de votre branche :** Daft Punk / Silence / Justice.
 
-### Étape 3 : Le travail de l'ami (Branche "Main")
+3. **Modification B :** On renomme `t` en `taux_tva`.
+* Ouvrez `tva.py` et remplacez `t` par `taux_tva`.
+* Sauvegardez.
+* Validez :
 
-Pendant ce temps, votre ami (resté sur `master` ou `main`) a détesté la playlist de base aussi, mais il préfère le Rock.
 
 ```bash
-# On retourne sur la branche principale
+git commit -am "Refacto: Renommage t -> taux_tva"
+
+```
+
+
+
+> 🔎 **Vérification :** Votre fichier doit ressembler à ceci :
+> ```python
+> prix_ht = 100
+> taux_tva = 1.10
+> print(prix_ht * taux_tva)
+> 
+> ```
+>
+>
+
+---
+
+## Étape 3 : Le Correctif Critique (Branche "master")
+
+Pendant ce temps, le service comptabilité signale une urgence : **La TVA est passée à 20% (1.20) !** Il faut corriger ça immédiatement sur la branche principale.
+
+1. Retournez sur la branche principale :
+
+```bash
 git switch master
 
 ```
 
-Lui, il change tout en un seul coup (pour simplifier son côté, mais compliquer le vôtre).
+2. Le fichier est revenu à son état initial (variables `p` et `t`). Corrigez la valeur `1.10` en `1.20` :
 
 ```bash
-# Il remplace tout le fichier d'un coup
-echo "Chanson 1: Nirvana" > playlist.txt
-echo "Chanson 2: AC/DC" >> playlist.txt
-echo "Chanson 3: Metallica" >> playlist.txt
-
-# Il valide
-git commit -am "Playlist 100% Rock"
+# Remplacez 1.10 par 1.20 dans le fichier
+sed -i 's/1.10/1.20/' tva.py
 
 ```
 
-> **État de la branche master :** Nirvana / AC/DC / Metallica.
+3. Validez le correctif :
+
+```bash
+git commit -am "FIX: Correction taux légal à 20%"
+
+```
+
+> 🔎 **État actuel :**
+> * `master` a les **mauvais noms** mais la **bonne valeur** (1.20).
+> * `clean-code` a les **bons noms** mais la **mauvaise valeur** (1.10).
+>
+>
 
 ---
 
-### Étape 4 : Le Rebase (Le moment de vérité)
+## Étape 4 : Le Rebase (Moment de vérité)
 
-Vous voulez mettre votre branche `electro` à jour par rapport à `master`.
-Git va devoir prendre vos 2 commits (Daft Punk et Justice) et essayer de les "rejouer" par-dessus la version Rock.
+Vous voulez récupérer le fix de `master` pour que votre code propre soit aussi juste financièrement.
+
+1. Revenez sur votre branche :
 
 ```bash
-# Revenez sur votre branche
-git switch electro
+git switch clean-code
 
-# Lancez le rebase
+```
+
+2. Lancez le rebase :
+
+```bash
 git rebase master
 
 ```
 
-💥 **STOP ! Premier Conflit.**
-Git essaie de poser votre premier commit ("Ajout de Daft Punk").
-Il voit que la ligne 1 est "Nirvana" sur master, mais que vous aviez modifié "Calme" en "Daft Punk". Il ne sait pas si "Nirvana" doit remplacer "Daft Punk" ou l'inverse.
-
-### Étape 5 : Résolution du premier round
-
-Ouvrez `playlist.txt`. Vous voyez ceci :
-
-```text
-<<<<<<< HEAD
-Chanson 1: Nirvana
-Chanson 2: AC/DC
-Chanson 3: Metallica
-=======
-Chanson 1: Daft Punk
-Chanson 2: Silence
-Chanson 3: Bruit blanc
->>>>>>> Ajout de Daft Punk en intro
-
-```
-
-*Notez que le bas du fichier est encore vieux ("Silence", "Bruit blanc") car nous n'en sommes qu'au premier commit !*
-
-**Action :** On veut un mix. Gardons votre Daft Punk en premier, mais acceptons le AC/DC et Metallica de l'ami pour le reste.
-Corrigez le fichier pour avoir ceci :
-
-```text
-Chanson 1: Daft Punk
-Chanson 2: AC/DC
-Chanson 3: Metallica
-
-```
-
-Sauvegardez et fermez. Puis dites à Git de continuer :
-
-```bash
-git add playlist.txt
-git rebase --continue
-
-```
+🛑 **STOP ! Conflit détecté.**
+Git vous signale un conflit dans `tva.py`. C'est normal. Git essaie d'appliquer votre renommage sur une ligne qui a changé de valeur sur master.
 
 ---
 
-### Étape 6 : Résolution du deuxième round
+## Étape 5 : La Résolution Logique
 
-💥 **STOP ! Deuxième Conflit.**
-Git a réussi à poser le premier commit. Maintenant, il essaie de poser votre deuxième commit ("Ajout de Justice").
-Il essaie de changer la ligne 3 en "Justice". Mais sur master, la ligne 3 est devenue "Metallica".
+1. Ouvrez `tva.py` dans votre éditeur. Vous devriez voir quelque chose comme ceci :
 
-Ouvrez `playlist.txt` :
-
-```text
-Chanson 1: Daft Punk
-Chanson 2: AC/DC
+```python
+prix_ht = 100
 <<<<<<< HEAD
-Chanson 3: Metallica
+t = 1.20
+print(prix_ht * t)
 =======
-Chanson 3: Justice
->>>>>>> Ajout de Justice pour la fin
+taux_tva = 1.10
+print(prix_ht * taux_tva)
+>>>>>>> Refacto: Renommage t -> taux_tva
 
 ```
 
-**Action :** Vous tenez à Justice. On remplace Metallica.
-Corrigez le fichier pour avoir ceci :
+2. **Analysez le dilemme :**
+* La section `HEAD` (ce qui vient de master) contient la **bonne valeur (1.20)**.
+* La section du bas (votre commit) contient le **bon nom de variable (taux_tva)**.
 
-```text
-Chanson 1: Daft Punk
-Chanson 2: AC/DC
-Chanson 3: Justice
+
+3. **L'action à faire :**
+   Ne choisissez pas simplement l'un ou l'autre ! Vous devez **reconstruire** le code pour qu'il soit parfait (Bon nom ET Bonne valeur).
+   Modifiez le code pour obtenir ceci :
+
+```python
+prix_ht = 100
+taux_tva = 1.20
+print(prix_ht * taux_tva)
 
 ```
 
-Sauvegardez et fermez. Puis terminez le rebase :
+4. Une fois le fichier nettoyé et sauvegardé :
 
 ```bash
-git add playlist.txt
+git add tva.py
 git rebase --continue
 
 ```
 
-Git devrait vous dire : `Successfully rebased and updated refs/heads/electro.`
+*Note : Si Git s'est arrêté deux fois (une fois pour `prix_ht`, une fois pour `taux_tva`), répétez l'opération jusqu'à ce que Git vous dise `Successfully rebased`.*
 
-### Étape 7 : Admirer le résultat
+---
 
-Vérifiez que l'historique est une belle ligne droite, combinant le travail de tout le monde :
+## Étape 6 : Vérification Finale
+
+Avez-vous réussi ? Pour le savoir, nous allons exécuter le script.
+
+1. Lancez le script Python :
+
+```bash
+python3 tva.py
+# (ou 'python tva.py' selon votre installation)
+
+```
+
+### ✅ Critères de réussite :
+
+1. Le script ne doit pas planter (sinon vous avez mal renommé les variables).
+2. Le résultat affiché doit être **120.0**.
+* Si ça affiche `110.0` : ❌ Vous avez écrasé le fix du comptable (code faux).
+* Si ça affiche `120.0` : 🎉 **Bravo !** Vous avez fusionné la logique métier et la qualité du code.
+
+
+3. Vérifiez l'historique pour voir la linéarité :
 
 ```bash
 git log --oneline --graph --all
 
 ```
 
-Vous devriez voir :
-
-1. (En haut) Ajout de Justice
-2. Ajout de Daft Punk
-3. Playlist 100% Rock (Le commit de master s'est inséré *avant* les vôtres)
-4. Playlist de départ
+*Vous devriez voir le commit "FIX" tout en bas, suivi de vos commits "Refacto".*
