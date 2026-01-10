@@ -54,13 +54,11 @@ Le client exige une architecture moderne et maintenable ("Future-proof").
 
 
 * **Base de Données :** Relationnelle (MySQL, MariaDB ou SQLite).
-* **Backend (API) :** Au choix de l'équipe (Node.js/Express OU PHP Natif/Slim).
+* **Backend (API) :** Au choix de l'équipe (Node.js/Express OU PHP Natif/Symfony).
 * Architecture REST requise (JSON).
 
 
 * **Frontend :** HTML5, CSS3, JS Vanilla (ES6+).
-* Pas de framework JS lourd (React/Vue) pour ce MVP. On veut du natif performant.
-
 
 * **Design System :** "Neo-Retro". Interface sombre, lisible, inspirée de l'esthétique Cyberpunk/Arcade, mais ergonomique pour le travail.
 
@@ -100,7 +98,9 @@ Le client exige une architecture moderne et maintenable ("Future-proof").
 
 
 📅 MARDI (BDD)
-[DB] Modélisation MCD (Schéma papier).
+[DB] Modélisation
+
+Ajouter dans la documentation de votre projet, le schéma (excalidraw, mermaid)
 
 [DB] Script SQL Init (CREATE TABLE)
 
@@ -110,7 +110,7 @@ On doit stocker en base les infos.
 - et permettre de connaître la marge qui va être réalisé sur la vente
 
 
-[DB] Script Seeding (Remplir la BDD avec le JSON).
+[DB] Script Seeding (Remplir la BDD).
 
 📅 MERCREDI (Back)
 [API] Setup Server (Node/PHP init).
@@ -134,11 +134,6 @@ Pour les étudiants:
 
 Creation d'un repo
  > Project > Link Project Pixel Trader
-
-
-
-
-
 
 
 ## Repo
