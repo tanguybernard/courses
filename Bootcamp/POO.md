@@ -209,6 +209,14 @@ $laCaisse->encaisser($monGateau); // Affiche : 15€
 $laCaisse->encaisser($monLivre);  // Affiche : 29.99€
 ```
 
+Avantage : 
+
+Si demain vous voulez vendre des Voitures.
+
+Sans polymorphisme : Vous devriez modifier le code de la Caisse pour ajouter if ($article est une Voiture) ....
+
+Avec polymorphisme : Vous ne touchez PAS au code de la Caisse. Vous créez juste une classe Voiture qui implémente Vendable. La caisse fonctionnera immédiatement avec la voiture.
+
 ### Abstraction
 
 **L'abstraction, c'est définir l'action globale (le QUOI) mais forcer l'enfant à fournir le détail précis (le COMMENT).**
