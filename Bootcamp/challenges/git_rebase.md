@@ -98,14 +98,14 @@ git commit -am "Refacto: Renommage t -> taux_tva"
 
 ---
 
-## Étape 3 : Le Correctif Critique (Branche "master")
+## Étape 3 : Le Correctif Critique (Branche "main")
 
 Pendant ce temps, le service comptabilité signale une urgence : **La TVA est passée à 20% (1.20) !** Il faut corriger ça immédiatement sur la branche principale.
 
 1. Retournez sur la branche principale :
 
 ```bash
-git switch master
+git switch main
 
 ```
 
@@ -125,7 +125,7 @@ git commit -am "FIX: Correction taux légal à 20%"
 ```
 
 > 🔎 **État actuel :**
-> * `master` a les **mauvais noms** mais la **bonne valeur** (1.20).
+> * `main` a les **mauvais noms** mais la **bonne valeur** (1.20).
 > * `clean-code` a les **bons noms** mais la **mauvaise valeur** (1.10).
 >
 >
@@ -134,7 +134,7 @@ git commit -am "FIX: Correction taux légal à 20%"
 
 ## Étape 4 : Le Rebase (Moment de vérité)
 
-Vous voulez récupérer le fix de `master` pour que votre code propre soit aussi juste financièrement.
+Vous voulez récupérer le fix de `main` pour que votre code propre soit aussi juste financièrement.
 
 1. Revenez sur votre branche :
 
@@ -146,12 +146,12 @@ git switch clean-code
 2. Lancez le rebase :
 
 ```bash
-git rebase master
+git rebase main
 
 ```
 
 🛑 **STOP ! Conflit détecté.**
-Git vous signale un conflit dans `tva.py`. C'est normal. Git essaie d'appliquer votre renommage sur une ligne qui a changé de valeur sur master.
+Git vous signale un conflit dans `tva.py`. C'est normal. Git essaie d'appliquer votre renommage sur une ligne qui a changé de valeur sur main.
 
 ---
 
@@ -172,7 +172,7 @@ print(prix_ht * taux_tva)
 ```
 
 2. **Analysez le dilemme :**
-* La section `HEAD` (ce qui vient de master) contient la **bonne valeur (1.20)**.
+* La section `HEAD` (ce qui vient de main) contient la **bonne valeur (1.20)**.
 * La section du bas (votre commit) contient le **bon nom de variable (taux_tva)**.
 
 
