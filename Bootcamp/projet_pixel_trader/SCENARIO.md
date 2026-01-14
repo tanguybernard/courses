@@ -37,7 +37,7 @@ Il s'agit d'une application web (Back-Office) permettant aux employés de :
 
 Le client vous fournit les seuls éléments récupérés du crash :
 
-* 📁 `assets/` : Un dossier contenant les visuels des produits (non triés).
+* 📁 `images/` : Un dossier contenant les visuels des produits (non triés).
 * 📄 `stock_export_legacy.csv` : Un fichier de données brut.
 * ⚠️ **ATTENTION :** Ce fichier est corrompu. Il contient des erreurs d'encodage, des devises mixtes et des doublons.
 * *Première tâche critique :* Nettoyer ces données avant toute intégration.
@@ -113,11 +113,11 @@ On doit stocker en base les infos.
 [DB] Script Seeding (Remplir la BDD).
 
 📅 MERCREDI (Back)
-[API] Setup Server (Node/PHP init).
+[API] Setup Server (Node/PHP).
 
-[API] GET /games (Lister tous les jeux).
+[API] Lister tous les jeux
 
-[API] GET /games/:id (Détail d'un jeu).
+[API] Obtenir le détail d'un jeu
 
 [API] Filtres (Par console ou état).
 
