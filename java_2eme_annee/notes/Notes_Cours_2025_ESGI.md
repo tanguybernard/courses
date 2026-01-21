@@ -46,6 +46,17 @@ https://www.codecademy.com/learn/learn-intermediate-java
       Utilisé pour : petits entiers, économie de mémoire
 
 
+////////////////
+
+
+    int	Entier	
+        - 2 octets (sur processeur 16 bits) : -32 768 à 32 767
+        - 4 octets (sur processeur 32 bits) : -2 147 483 648 à 2 147 483 647
+    
+    unsigned int	Entier non signé	
+        - 2 octets (sur processeur 16 bits) : 0 à 65 535
+        - 4 octets (sur processeur 32 bits) : 0 à 4 294 967 295
+
 #### Class
 
 En Java, une classe est une structure conceptuelle utilisée pour créer des objets, mais elle n'est pas elle-même un objet.
@@ -59,92 +70,51 @@ Integer c'est un wrapper, on accède à des méthode comme parseInt(), plus cout
 
 #### Passage par valeur
 
+Explication détaillée avec analogies
+1. Le passage par valeur (Types Primitifs)
+   Concerne : int, double, boolean, char, etc.
+
+Quand vous passez un type primitif à une méthode, Java fait une photocopie de la valeur.
+
+L'analogie : Imaginez que vous avez un dessin (votre variable int x = 10). Vous donnez une photocopie de ce dessin à votre ami (la méthode). Si votre ami gribouille sur la photocopie, votre dessin original reste intact.
+
+En Java : Si la méthode modifie la variable, cela n'a aucun impact sur la variable d'origine en dehors de la méthode.
+
+2. Le passage par "référence" (Objets / Non-Primitifs)
+   Concerne : String, Integer, Tableaux [], et toutes vos classes (User, Product...)
+
+Quand vous passez un objet à une méthode, vous ne passez pas l'objet entier (trop lourd), mais son adresse mémoire (sa référence).
+
+L'analogie : Imaginez que vous avez une maison (l'Objet). Vous ne donnez pas la maison à la méthode, vous lui donnez une copie des clés (la référence).
+
+Si la méthode utilise les clés pour entrer et repeindre les murs en rouge (modifier un attribut de l'objet), alors quand vous rentrez chez vous, les murs sont rouges. L'objet est modifié pour tout le monde.
+
+Attention (Nuance importante) : Si la méthode jette ses clés et achète une nouvelle maison (réassigne la variable param = new Objet()), cela ne change pas votre maison à vous. Elle a juste changé de maison de son côté.
+
+
 ```java
-public class Exemple {
-    public static void incrementer(int x) {
-        x++;
-    }
+public class TestPassage {
 
     public static void main(String[] args) {
-        int nombre = 10;
-        incrementer(nombre);
-        System.out.println(nombre); // Affiche toujours 10
+        int monNombre = 5;
+        StringBuilder monTexte = new StringBuilder("Bonjour");
+
+        modifier(monNombre, monTexte);
+
+        // 1. L'int n'a pas changé (Passage par valeur / Photocopie)
+        System.out.println(monNombre); // Affiche : 5 
+
+        // 2. L'objet a été modifié (Passage par référence / Clés de la maison)
+        System.out.println(monTexte);  // Affiche : Bonjour Monde
+    }
+
+    public static void modifier(int n, StringBuilder t) {
+        n = n + 10;      // Modifie seulement la copie locale
+        t.append(" Monde"); // Modifie l'objet réel en mémoire via la référence
     }
 }
 ```
 
-
-#### Passage par reference 
-
-Note Slide (a parameter with a non-primitive type is passed by reference) : 
-
-_Cette affirmation n'est pas tout à fait exacte. En Java, tous les paramètres sont passés par valeur, y compris les types non primitifs (objets). Cependant, pour les objets, la valeur passée est une référence à l'objet, ce qui peut donner l'impression d'un passage par référence._
-
-_Lorsqu'un objet est passé à une méthode, Java crée une copie de la référence à cet objet, pas une référence directe à la variable originale13. Cette copie pointe vers le même objet en mémoire, mais reste une valeur distincte._
-
-
-_Le & en PHP offre un véritable passage par référence, permettant une manipulation directe des variables passées en argument_
-
-Pour les objets, la référence (adresse en mémoire) de l'objet est passée par valeur. Cela signifie que la méthode reçoit une copie de la référence, mais les deux références (l'originale et la copie) pointent vers le même objet.
-
-```java
-public class Exemple {
-    static class Personne {
-        String nom;
-        Personne(String nom) {
-            this.nom = nom;
-        }
-    }
-
-    public static void changerNom(Personne personne) {
-        personne.nom = "Alice";
-    }
-
-    public static void main(String[] args) {
-        Personne p = new Personne("Bob");
-        changerNom(p);
-        System.out.println(p.nom); // Affiche "Alice"
-    }
-}
-```
-
-#### Remplacer une référence
-
-La méthode remplacerReference crée un nouvel objet et modifie la copie de la référence. Cela n'affecte pas la référence originale dans main.
-
-```java
-public class Exemple {
-    static class Personne {
-        private String nom;
-        Personne(String nom) {
-            this.nom = nom;
-        }
-
-        public void setName(String name) {
-            this.name = name;
-        }
-
-        public String getName() {
-            return this.name;
-        }
-    }
-
-    public static void remplacerReference(Personne personne) {
-        personne = new Personne("Charlie");
-    }
-
-    public static void modifyPerson(Personne p) {
-        p.setName("Alice");
-    }
-    
-
-    public static void main(String[] args) {
-        Personne p = new Personne("Bob");
-        remplacerReference(p);
-        System.out.println(p.nom); // Affiche toujours "Bob"
-    }
-}
-```
 
 ## 2. Introduction OOP
 
