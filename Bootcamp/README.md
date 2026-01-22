@@ -59,3 +59,8 @@ https://www.nicolashachet.com/blog/developpement-php/larchitecture-rest-explique
 
 https://blog.stephane-robert.info/docs/developper/api-rest/
 
+
+## Architecture
+
+https://medium.com/code-divoire/larchitecture-logicielle-eb663afe63f
+
