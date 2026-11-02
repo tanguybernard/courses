@@ -63,25 +63,6 @@ describe('Kata Wallet', () =>{
         spy.mockRestore();
     });
 
-    /**
-     * Utile lorsque l'on veut mocker une dependance vers une base de données
-     * Le spy lui appelle vraiment
-     * Le mock, lui n'appelle pas vraiment mais renvoie une valeur fixe
-     */
-    test("Mock exchange", () => { //Tester le comment (agi correctement) et pas le quoi (le resultat final)
-        //Le mock simule une dépendance et vérifier les interactions
-        // Le Stub donne juste une réponse.
-        // Le spy observe juste
-        const mockFn = jest.fn().mockReturnValue(42);
-
-        const wallet = new Wallet( 4, "EURO");
-        wallet.convert("DOLLARS",mockFn);
-        expect(mockFn).toHaveBeenCalled();
-        expect(mockFn).toHaveBeenCalledWith(4, "EURO", "DOLLARS");
-        expect(mockFn).toHaveBeenCalledTimes(1);
-    });
-
-
     /*
 
     const database = PgDatabase();

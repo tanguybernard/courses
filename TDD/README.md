@@ -26,7 +26,7 @@
 
 - Avancées
     - Kata Rover en Oustide In (Participant) 
-    - Tests Doubles (Fake, Mock => Kata Wallet à présenter)
+    - Tests Doubles (Dummy, Stub, Fake, Mock, Spy => Notes.md, fil rouge Birthday Greetings)
     - Exercice Birthday Greetings
     - Test solitaire et sociable (https://martinfowler.com/bliki/UnitTest.html)
     - Trip Service Kata pour travailler sur un legacy
