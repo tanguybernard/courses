@@ -4,7 +4,7 @@
 
 L'école organise un tournoi de tennis. C'est une version simplifiée du jeu de tennis : **un match se joue en un seul jeu**, et le premier joueur qui gagne le jeu gagne le match.
 
-On te demande d'écrire, **en TDD**, la classe qui tient le score.
+On te demande d'écrire, **en TDD**, le code qui tient le score.
 
 ## Mise en place
 
@@ -14,16 +14,18 @@ git init && git add . && git commit -m "départ"
 npm run test:watch
 ```
 
-Le fichier `src/jeu.test.ts` contient déjà un premier test, qui est rouge. À toi de jouer.
+Le dossier `src/` est vide : c'est à toi d'écrire le premier test.
 
-## L'API attendue
+## Ce qui est imposé
 
-```ts
-const jeu = new Jeu("Alice", "Bob");
+Pour que ton code puisse être corrigé, seul le point d'entrée est imposé :
 
-jeu.pointPour("Alice");   // Alice marque un point
-jeu.score();              // "Quinze-Zéro"
-```
+- une classe `Jeu`, exportée depuis `src/jeu.ts` ;
+- créée avec le nom des deux joueurs : `new Jeu("Alice", "Bob")` ;
+- une méthode `pointPour(joueur: string)`, qui fait marquer un point à ce joueur ;
+- une méthode `score(): string`, qui renvoie le score.
+
+Tout le reste (l'organisation de ton code, les autres classes ou fonctions, les noms internes) est libre.
 
 Le score s'écrit toujours dans l'ordre **joueur 1, puis joueur 2**.
 
@@ -52,21 +54,15 @@ Les points s'annoncent **en français** : `Zéro`, `Quinze`, `Trente`, `Quarante
 
 Le joueur qui marque alors qu'il est à `Quarante` gagne le match : `score()` affiche `"Victoire Alice"` (ou `"Victoire Bob"`).
 
-## Bonus : un set complet
+## Bonus : le match en un set
 
-Écris une deuxième classe, `MatchEnUnSet`, qui joue **un set** au lieu d'un seul jeu.
+Le tournoi veut aussi proposer des matchs plus longs, **en un set**. Les règles d'un jeu ne changent pas, et `Jeu` doit continuer à fonctionner comme aux étapes 1 à 3.
 
-```ts
-const match = new MatchEnUnSet("Alice", "Bob");
-
-match.pointPour("Alice");
-match.score();   // le score du jeu en cours : "Quinze-Zéro"
-match.jeux();    // le nombre de jeux gagnés : "0-0"
-```
-
-- Chaque jeu suit les règles des étapes 1 à 3. Quand un jeu est gagné, `jeux()` passe à `"1-0"` (ou `"0-1"`) et un nouveau jeu commence à `"Zéro-Zéro"`.
 - Le premier joueur à **4 jeux** gagne le match, **sans qu'il faille 2 jeux d'écart** : 4-3 suffit.
-- Une fois le match gagné, `score()` annonce le vainqueur, avec **son nombre de jeux en premier** : `"Victoire Alice 4-2"`, `"Victoire Bob 4-1"`.
+- Pendant le match, on doit pouvoir connaître le score du jeu en cours et le nombre de jeux gagnés par chacun.
+- Une fois le match gagné, le score annonce le vainqueur, avec **son nombre de jeux en premier** : `"Victoire Alice 4-2"`, `"Victoire Bob 4-1"`.
+
+À toi de décider comment l'écrire.
 
 ## Le rendu
 
