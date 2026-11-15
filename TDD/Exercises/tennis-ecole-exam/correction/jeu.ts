@@ -1,3 +1,5 @@
+import type { Classement } from "./classement";
+
 const NOMS_DES_POINTS = ["Zéro", "Quinze", "Trente", "Quarante"];
 const POINTS_POUR_GAGNER = 4; // pas d'avantage : le 4e point gagne toujours
 
@@ -7,10 +9,20 @@ export class Jeu {
   constructor(
     private readonly joueur1: string,
     private readonly joueur2: string,
+    private readonly classement: Classement,
   ) {}
 
   pointPour(joueur: string): void {
+    // Après la victoire, un point ne change plus rien : le résultat n'est enregistré qu'une fois
+    if (this.vainqueur() !== undefined) return;
+
     this.points[joueur === this.joueur1 ? 0 : 1]++;
+
+    const vainqueur = this.vainqueur();
+    if (vainqueur !== undefined) {
+      const perdant = vainqueur === this.joueur1 ? this.joueur2 : this.joueur1;
+      this.classement.enregistrer(vainqueur, perdant);
+    }
   }
 
   vainqueur(): string | undefined {

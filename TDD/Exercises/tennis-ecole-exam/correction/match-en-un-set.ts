@@ -1,6 +1,10 @@
+import type { Classement } from "./classement";
 import { Jeu } from "./jeu";
 
 const JEUX_POUR_GAGNER = 4; // sans 2 jeux d'écart
+
+// Chaque jeu du set ne doit rien envoyer au classement : seul le match compte
+const AUCUN_CLASSEMENT: Classement = { enregistrer: () => {} };
 
 export class MatchEnUnSet {
   private jeuEnCours: Jeu;
@@ -9,20 +13,26 @@ export class MatchEnUnSet {
   constructor(
     private readonly joueur1: string,
     private readonly joueur2: string,
+    private readonly classement: Classement,
   ) {
-    this.jeuEnCours = new Jeu(joueur1, joueur2);
+    this.jeuEnCours = this.nouveauJeu();
   }
 
   pointPour(joueur: string): void {
-    // Non demandé par l'énoncé : un point après la victoire est ignoré
     if (this.vainqueur() !== undefined) return;
 
     this.jeuEnCours.pointPour(joueur);
 
     const vainqueurDuJeu = this.jeuEnCours.vainqueur();
-    if (vainqueurDuJeu !== undefined) {
-      this.jeuxGagnes[vainqueurDuJeu === this.joueur1 ? 0 : 1]++;
-      this.jeuEnCours = new Jeu(this.joueur1, this.joueur2);
+    if (vainqueurDuJeu === undefined) return;
+
+    this.jeuxGagnes[vainqueurDuJeu === this.joueur1 ? 0 : 1]++;
+    this.jeuEnCours = this.nouveauJeu();
+
+    const vainqueur = this.vainqueur();
+    if (vainqueur !== undefined) {
+      const perdant = vainqueur === this.joueur1 ? this.joueur2 : this.joueur1;
+      this.classement.enregistrer(vainqueur, perdant);
     }
   }
 
@@ -36,6 +46,10 @@ export class MatchEnUnSet {
     if (vainqueur === this.joueur1) return `Victoire ${vainqueur} ${jeux1}-${jeux2}`;
     if (vainqueur === this.joueur2) return `Victoire ${vainqueur} ${jeux2}-${jeux1}`;
     return this.jeuEnCours.score();
+  }
+
+  private nouveauJeu(): Jeu {
+    return new Jeu(this.joueur1, this.joueur2, AUCUN_CLASSEMENT);
   }
 
   private vainqueur(): string | undefined {
