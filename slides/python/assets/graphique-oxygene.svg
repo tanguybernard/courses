@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 230" font-family="'Marker Felt', 'Chalkboard SE', 'Comic Sans MS', 'Segoe Print', cursive" role="img" aria-label="Dessin à la craie d'un diagramme en barres : une barre par dôme, colorée selon l'alerte, et une ligne pointillée rouge au seuil de 30 %">
+  <defs>
+    <filter id="craie" x="-5%" y="-10%" width="110%" height="120%">
+      <feTurbulence type="fractalNoise" baseFrequency=".035" numOctaves="2" seed="51"/>
+      <feDisplacementMap in="SourceGraphic" scale="4"/>
+    </filter>
+    <pattern id="h-vert" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(40)">
+      <line x1="0" y1="0" x2="0" y2="8" stroke="#8fe0b0" stroke-width="3"/>
+    </pattern>
+    <pattern id="h-jaune" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(40)">
+      <line x1="0" y1="0" x2="0" y2="8" stroke="#ffd27a" stroke-width="3"/>
+    </pattern>
+    <pattern id="h-rouge" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(40)">
+      <line x1="0" y1="0" x2="0" y2="8" stroke="#ff9a8c" stroke-width="3"/>
+    </pattern>
+  </defs>
+
+  <!-- le tableau -->
+  <rect width="660" height="230" rx="16" fill="#1b2422"/>
+
+  <g filter="url(#craie)">
+    <!-- l'axe vertical va de y=180 (0 %) à y=40 (100 %) : 1,4 px par point -->
+    <!-- 82 % = 115, 45 % = 63, 28 % = 39, 12 % = 17 -->
+    <rect x="140" y="65"  width="80" height="115" fill="url(#h-vert)"/>
+    <rect x="260" y="117" width="80" height="63"  fill="url(#h-jaune)"/>
+    <rect x="380" y="141" width="80" height="39"  fill="url(#h-rouge)"/>
+    <rect x="500" y="163" width="80" height="17"  fill="url(#h-rouge)"/>
+
+    <g fill="none" stroke="#f4f1e8" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+      <!-- axes -->
+      <path d="M100 30 V180 H620"/>
+      <path d="M94 40 H100 M94 110 H100"/>
+      <!-- contour des barres -->
+      <path d="M140 180 V65 H220 V180"/>
+      <path d="M260 180 V117 H340 V180"/>
+      <path d="M380 180 V141 H460 V180"/>
+      <path d="M500 180 V163 H580 V180"/>
+    </g>
+
+    <!-- le seuil d'alerte à 30 % -->
+    <path d="M100 138 H620" fill="none" stroke="#ff9a8c" stroke-width="3" stroke-dasharray="10 8" stroke-linecap="round"/>
+  </g>
+
+  <text x="360" y="24" text-anchor="middle" font-size="18" fill="#f4f1e8">Base Ares : oxygène (%)</text>
+
+  <g font-size="17" fill="#f4f1e8" text-anchor="end">
+    <text x="88" y="46">100</text>
+    <text x="88" y="116">50</text>
+    <text x="88" y="186">0</text>
+  </g>
+  <text x="626" y="132" font-size="16" fill="#ff9a8c" text-anchor="end">seuil 30</text>
+
+  <g font-size="18" fill="#f4f1e8" text-anchor="middle">
+    <text x="180" y="204">Habitat</text>
+    <text x="300" y="204">Serre</text>
+    <text x="420" y="204">Garage</text>
+    <text x="540" y="204">Labo</text>
+  </g>
+</svg>

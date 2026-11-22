@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 230" font-family="'Marker Felt', 'Chalkboard SE', 'Comic Sans MS', 'Segoe Print', cursive" role="img" aria-label="Jauge d'oxygène à la craie : évacuation sous 10, alerte rouge à partir de 10, orange à partir de 30, verte à partir de 60">
+  <defs>
+    <filter id="craie" x="-5%" y="-10%" width="110%" height="120%">
+      <feTurbulence type="fractalNoise" baseFrequency=".03" numOctaves="2" seed="7"/>
+      <feDisplacementMap in="SourceGraphic" scale="6"/>
+    </filter>
+    <pattern id="h-violet" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(40)">
+      <line x1="0" y1="0" x2="0" y2="10" stroke="#c9a0e8" stroke-width="4"/>
+    </pattern>
+    <pattern id="h-rouge" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(40)">
+      <line x1="0" y1="0" x2="0" y2="10" stroke="#ff9a8c" stroke-width="4"/>
+    </pattern>
+    <pattern id="h-orange" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(40)">
+      <line x1="0" y1="0" x2="0" y2="10" stroke="#ffd27a" stroke-width="4"/>
+    </pattern>
+    <pattern id="h-vert" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(40)">
+      <line x1="0" y1="0" x2="0" y2="10" stroke="#8fe0b0" stroke-width="4"/>
+    </pattern>
+  </defs>
+
+  <!-- le tableau -->
+  <rect width="900" height="230" rx="16" fill="#1b2422"/>
+
+  <!-- la jauge va de x=50 (0 %) à x=850 (100 %) : 8 px par point -->
+  <g filter="url(#craie)">
+    <rect x="50"  y="90" width="80"  height="60" fill="url(#h-violet)"/>
+    <rect x="130" y="90" width="160" height="60" fill="url(#h-rouge)"/>
+    <rect x="290" y="90" width="240" height="60" fill="url(#h-orange)"/>
+    <rect x="530" y="90" width="320" height="60" fill="url(#h-vert)"/>
+
+    <g fill="none" stroke="#f4f1e8" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="50" y="90" width="800" height="60"/>
+      <!-- seuils -->
+      <path d="M130 90 V168 M290 90 V168 M530 90 V168"/>
+      <path d="M50 150 V168 M850 150 V168"/>
+      <!-- trait qui relie « Évacuation » à sa zone -->
+      <path d="M90 46 V84"/>
+    </g>
+  </g>
+
+  <!-- noms des niveaux -->
+  <g font-size="26" text-anchor="middle">
+    <text x="50"  y="36" text-anchor="start" fill="#c9a0e8">Évacuation</text>
+    <text x="210" y="72" fill="#ff9a8c">Alerte rouge</text>
+    <text x="410" y="72" fill="#ffd27a">Alerte orange</text>
+    <text x="690" y="72" fill="#8fe0b0">Alerte verte</text>
+  </g>
+
+  <!-- valeurs des seuils -->
+  <g fill="#f4f1e8" font-size="28" text-anchor="middle">
+    <text x="50"  y="204">0</text>
+    <text x="130" y="204">10</text>
+    <text x="290" y="204">30</text>
+    <text x="530" y="204">60</text>
+    <text x="850" y="204">100</text>
+  </g>
+</svg>

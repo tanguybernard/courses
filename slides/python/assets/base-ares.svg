@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 250" font-family="'Marker Felt', 'Chalkboard SE', 'Comic Sans MS', 'Segoe Print', cursive" role="img" aria-label="Base Ares dessinée à la craie : quatre dômes et leur niveau d'oxygène">
+  <defs>
+    <!-- léger tremblement pour l'effet « tracé à la main » -->
+    <filter id="craie" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence type="fractalNoise" baseFrequency=".035" numOctaves="2" seed="4"/>
+      <feDisplacementMap in="SourceGraphic" scale="5"/>
+    </filter>
+    <!-- hachures de couleur pour le niveau d'oxygène -->
+    <pattern id="hachure-verte" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(40)">
+      <line x1="0" y1="0" x2="0" y2="8" stroke="#8fe0b0" stroke-width="3"/>
+    </pattern>
+    <pattern id="hachure-orange" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(40)">
+      <line x1="0" y1="0" x2="0" y2="8" stroke="#ffd27a" stroke-width="3"/>
+    </pattern>
+    <pattern id="hachure-rouge" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(40)">
+      <line x1="0" y1="0" x2="0" y2="8" stroke="#ff9a8c" stroke-width="3"/>
+    </pattern>
+    <clipPath id="dome-habitat"><path d="M42 190 A58 58 0 0 1 158 190 Z"/></clipPath>
+    <clipPath id="dome-serre"><path d="M197 190 A58 58 0 0 1 313 190 Z"/></clipPath>
+    <clipPath id="dome-labo"><path d="M352 190 A58 58 0 0 1 468 190 Z"/></clipPath>
+    <clipPath id="dome-garage"><path d="M507 190 A58 58 0 0 1 623 190 Z"/></clipPath>
+  </defs>
+
+  <!-- le tableau -->
+  <rect width="660" height="250" rx="16" fill="#1b2422"/>
+
+  <g filter="url(#craie)">
+    <!-- niveaux : un dôme fait 58 de haut, donc 82 % = 48, 45 % = 26, 12 % = 7, 28 % = 16 -->
+    <rect x="42"  y="142" width="116" height="48" fill="url(#hachure-verte)"  clip-path="url(#dome-habitat)"/>
+    <rect x="197" y="164" width="116" height="26" fill="url(#hachure-orange)" clip-path="url(#dome-serre)"/>
+    <rect x="352" y="183" width="116" height="7"  fill="url(#hachure-rouge)"  clip-path="url(#dome-labo)"/>
+    <rect x="507" y="174" width="116" height="16" fill="url(#hachure-rouge)"  clip-path="url(#dome-garage)"/>
+
+    <g fill="none" stroke="#f4f1e8" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+      <!-- dômes -->
+      <path d="M42 190 A58 58 0 0 1 158 190"/>
+      <path d="M197 190 A58 58 0 0 1 313 190"/>
+      <path d="M352 190 A58 58 0 0 1 468 190"/>
+      <path d="M507 190 A58 58 0 0 1 623 190"/>
+      <!-- sol, tunnels, cailloux -->
+      <path d="M10 190 H650"/>
+      <path d="M158 176 H197 M313 176 H352 M468 176 H507"/>
+      <path d="M20 214 q14 -8 28 0 M300 222 q18 -9 36 0 M560 216 q16 -8 32 0"/>
+      <!-- drapeau sur l'Habitat -->
+      <path d="M100 132 V108 l18 6 l-18 6"/>
+      <!-- étoiles -->
+      <path d="M590 60 l5 12 l12 2 l-9 8 l3 12 l-11 -7 l-11 7 l3 -12 l-9 -8 l12 -2 z"/>
+      <circle cx="60" cy="52" r="3"/>
+      <circle cx="330" cy="40" r="3"/>
+      <circle cx="470" cy="66" r="2"/>
+    </g>
+  </g>
+
+  <!-- noms des dômes -->
+  <g fill="#f4f1e8" font-size="19" text-anchor="middle">
+    <text x="100" y="98">Habitat</text>
+    <text x="255" y="120">Serre</text>
+    <text x="410" y="120">Labo</text>
+    <text x="565" y="120">Garage</text>
+  </g>
+
+  <!-- niveaux d'oxygène -->
+  <g font-size="21" text-anchor="middle" stroke="#1b2422" stroke-width="6" stroke-linejoin="round" paint-order="stroke">
+    <text x="100" y="172" fill="#f4f1e8">82 %</text>
+    <text x="255" y="158" fill="#ffd27a">45 %</text>
+    <text x="410" y="170" fill="#ff9a8c">12 %</text>
+    <text x="565" y="164" fill="#ff9a8c">28 %</text>
+  </g>
+</svg>

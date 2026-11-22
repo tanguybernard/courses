@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 130" font-family="'Marker Felt', 'Chalkboard SE', 'Comic Sans MS', 'Segoe Print', cursive" role="img" aria-label="Dessin à la craie : une capsule spatiale en difficulté appelle Houston, où un écran de contrôle affiche une alerte">
+  <defs>
+    <filter id="craie" x="-5%" y="-10%" width="110%" height="120%">
+      <feTurbulence type="fractalNoise" baseFrequency=".035" numOctaves="2" seed="61"/>
+      <feDisplacementMap in="SourceGraphic" scale="4"/>
+    </filter>
+  </defs>
+
+  <!-- le tableau -->
+  <rect width="660" height="130" rx="16" fill="#1b2422"/>
+
+  <g filter="url(#craie)" fill="none" stroke="#f4f1e8" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <!-- la capsule, un peu penchée -->
+    <g transform="rotate(-14 90 68)">
+      <path d="M60 92 L74 40 Q90 26 106 40 L120 92 Z"/>
+      <circle cx="90" cy="60" r="9"/>
+      <path d="M60 92 L50 104 M120 92 L130 104 M76 92 V102 M104 92 V102"/>
+    </g>
+    <!-- de la fumée -->
+    <path d="M132 34 q10 -10 20 0 q10 -8 16 4" stroke="#ff9a8c"/>
+    <path d="M140 18 q8 -8 16 0" stroke="#ff9a8c"/>
+    <!-- étoiles -->
+    <circle cx="30" cy="24" r="2"/><circle cx="196" cy="100" r="2"/><circle cx="24" cy="102" r="2"/>
+
+    <!-- le message radio -->
+    <path d="M176 30 H372 Q384 30 384 42 V70 Q384 82 372 82 H214 L190 98 L196 82 H176 Q164 82 164 70 V42 Q164 30 176 30 Z"/>
+    <path d="M400 58 q10 -8 20 0 M400 70 q10 -8 20 0" stroke="#8fe0b0"/>
+
+    <!-- le centre de contrôle -->
+    <path d="M440 22 H630 V92 H440 Z"/>
+    <path d="M516 92 V106 M554 92 V106 M494 108 H576"/>
+    <!-- triangle d'alerte sur l'écran -->
+    <path d="M466 78 L490 36 L514 78 Z" stroke="#ffd27a"/>
+    <path d="M490 50 V64 M490 71 V72" stroke="#ffd27a"/>
+  </g>
+
+  <text x="274" y="64" text-anchor="middle" font-size="22" fill="#f4f1e8">Houston ?</text>
+  <text x="572" y="54" text-anchor="middle" font-size="15" fill="#ff9a8c" font-family="Menlo, Consolas, monospace" font-weight="bold">Zero</text>
+  <text x="572" y="72" text-anchor="middle" font-size="15" fill="#ff9a8c" font-family="Menlo, Consolas, monospace" font-weight="bold">Division</text>
+  <text x="572" y="88" text-anchor="middle" font-size="15" fill="#ff9a8c" font-family="Menlo, Consolas, monospace" font-weight="bold">Error</text>
+</svg>

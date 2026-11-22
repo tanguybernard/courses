@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 200" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" role="img" aria-label="Dessin à la craie d'un terminal : une ligne par dôme, avec une barre proportionnelle au niveau d'oxygène, le pourcentage et le niveau d'alerte">
+  <defs>
+    <filter id="craie" x="-5%" y="-10%" width="110%" height="120%">
+      <feTurbulence type="fractalNoise" baseFrequency=".035" numOctaves="2" seed="41"/>
+      <feDisplacementMap in="SourceGraphic" scale="4"/>
+    </filter>
+    <pattern id="h-vert" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(40)">
+      <line x1="0" y1="0" x2="0" y2="8" stroke="#8fe0b0" stroke-width="3"/>
+    </pattern>
+    <pattern id="h-jaune" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(40)">
+      <line x1="0" y1="0" x2="0" y2="8" stroke="#ffd27a" stroke-width="3"/>
+    </pattern>
+    <pattern id="h-rouge" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(40)">
+      <line x1="0" y1="0" x2="0" y2="8" stroke="#ff9a8c" stroke-width="3"/>
+    </pattern>
+  </defs>
+
+  <!-- le tableau -->
+  <rect width="660" height="200" rx="16" fill="#1b2422"/>
+
+  <g filter="url(#craie)">
+    <!-- barres : 3,2 px par point, donc 82 % = 262, 45 % = 144, 28 % = 90, 12 % = 38 -->
+    <rect x="150" y="62"  width="262" height="20" fill="url(#h-vert)"/>
+    <rect x="150" y="94"  width="144" height="20" fill="url(#h-jaune)"/>
+    <rect x="150" y="126" width="90"  height="20" fill="url(#h-rouge)"/>
+    <rect x="150" y="158" width="38"  height="20" fill="url(#h-rouge)"/>
+
+    <g fill="none" stroke="#f4f1e8" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+      <!-- la fenêtre du terminal -->
+      <path d="M14 12 H646 V188 H14 Z"/>
+      <path d="M14 42 H646"/>
+      <circle cx="32" cy="27" r="4"/><circle cx="50" cy="27" r="4"/><circle cx="68" cy="27" r="4"/>
+      <!-- contour des barres -->
+      <path d="M150 62 H412 V82 H150 Z"/>
+      <path d="M150 94 H294 V114 H150 Z"/>
+      <path d="M150 126 H240 V146 H150 Z"/>
+      <path d="M150 158 H188 V178 H150 Z"/>
+    </g>
+  </g>
+
+  <text x="92" y="33" font-size="15" fill="#f4f1e8">python3 ares.py</text>
+
+  <!-- le texte reste en police de code pour être lisible de loin -->
+  <g font-size="19" font-weight="bold" fill="#f4f1e8">
+    <text x="34" y="79">Habitat</text>
+    <text x="34" y="111">Serre</text>
+    <text x="34" y="143">Garage</text>
+    <text x="34" y="175">Labo</text>
+  </g>
+  <g font-size="19" font-weight="bold">
+    <text x="438" y="79"  fill="#8fe0b0">82 %  verte</text>
+    <text x="438" y="111" fill="#ffd27a">45 %  orange</text>
+    <text x="438" y="143" fill="#ff9a8c">28 %  rouge</text>
+    <text x="438" y="175" fill="#ff9a8c">12 %  rouge</text>
+  </g>
+</svg>

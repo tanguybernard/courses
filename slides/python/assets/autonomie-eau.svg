@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 160" font-family="'Marker Felt', 'Chalkboard SE', 'Comic Sans MS', 'Segoe Print', cursive" role="img" aria-label="Dessin à la craie : une cuve de 120 litres d'eau et quatre astronautes qui consomment 3 litres par jour chacun">
+  <defs>
+    <filter id="craie" x="-5%" y="-10%" width="110%" height="120%">
+      <feTurbulence type="fractalNoise" baseFrequency=".035" numOctaves="2" seed="11"/>
+      <feDisplacementMap in="SourceGraphic" scale="4"/>
+    </filter>
+    <pattern id="h-eau" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(40)">
+      <line x1="0" y1="0" x2="0" y2="8" stroke="#8fc7f2" stroke-width="3"/>
+    </pattern>
+  </defs>
+
+  <!-- le tableau -->
+  <rect width="660" height="160" rx="16" fill="#1b2422"/>
+
+  <g filter="url(#craie)">
+    <!-- l'eau dans la cuve -->
+    <rect x="52" y="62" width="96" height="68" fill="url(#h-eau)"/>
+
+    <g fill="none" stroke="#f4f1e8" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+      <!-- la cuve -->
+      <path d="M52 40 V130 H148 V40"/>
+      <path d="M52 40 Q100 26 148 40 Q100 54 52 40"/>
+      <path d="M52 62 Q100 74 148 62"/>
+      <!-- le tuyau vers l'équipage -->
+      <path d="M148 110 H232 M220 102 L232 110 L220 118"/>
+
+      <!-- quatre astronautes : casque, visière, corps -->
+      <g id="astronaute">
+        <circle cx="300" cy="52" r="18"/>
+        <path d="M289 50 Q300 42 311 50 Q300 60 289 50"/>
+        <path d="M282 72 Q300 64 318 72 V104 H282 Z"/>
+      </g>
+      <use href="#astronaute" x="90"/>
+      <use href="#astronaute" x="180"/>
+      <use href="#astronaute" x="270"/>
+    </g>
+  </g>
+
+  <!-- les chiffres de l'énoncé -->
+  <text x="100" y="104" text-anchor="middle" font-size="22" fill="#f4f1e8" stroke="#1b2422" stroke-width="6" stroke-linejoin="round" paint-order="stroke">120 L</text>
+  <g fill="#8fc7f2" font-size="17" text-anchor="middle">
+    <text x="300" y="134">3 L / jour</text>
+    <text x="390" y="134">3 L / jour</text>
+    <text x="480" y="134">3 L / jour</text>
+    <text x="570" y="134">3 L / jour</text>
+  </g>
+</svg>

@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 160" font-family="'Marker Felt', 'Chalkboard SE', 'Comic Sans MS', 'Segoe Print', cursive" role="img" aria-label="Dessin à la craie : la batterie principale contient 64 kWh, la batterie de secours 100 kWh, et la base consomme 8 kWh par heure">
+  <defs>
+    <filter id="craie" x="-5%" y="-10%" width="110%" height="120%">
+      <feTurbulence type="fractalNoise" baseFrequency=".035" numOctaves="2" seed="31"/>
+      <feDisplacementMap in="SourceGraphic" scale="4"/>
+    </filter>
+    <pattern id="h-jaune" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(40)">
+      <line x1="0" y1="0" x2="0" y2="8" stroke="#ffd27a" stroke-width="3"/>
+    </pattern>
+    <pattern id="h-vert" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(40)">
+      <line x1="0" y1="0" x2="0" y2="8" stroke="#8fe0b0" stroke-width="3"/>
+    </pattern>
+  </defs>
+
+  <!-- le tableau -->
+  <rect width="660" height="160" rx="16" fill="#1b2422"/>
+
+  <g filter="url(#craie)">
+    <!-- charge : chaque batterie fait 140 de large, donc 64 % = 90 et 100 % = 140 -->
+    <rect x="40"  y="50" width="90"  height="56" fill="url(#h-jaune)"/>
+    <rect x="240" y="50" width="140" height="56" fill="url(#h-vert)"/>
+
+    <g fill="none" stroke="#f4f1e8" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+      <!-- batterie principale -->
+      <path d="M40 50 H180 V106 H40 Z M180 66 H190 V90 H180"/>
+      <!-- batterie de secours -->
+      <path d="M240 50 H380 V106 H240 Z M380 66 H390 V90 H380"/>
+      <!-- le courant part vers la base -->
+      <path d="M410 78 H470 M458 70 L470 78 L458 86"/>
+      <!-- éclair -->
+      <path d="M440 40 L428 62 H442 L432 84" stroke="#ffd27a"/>
+      <!-- un dôme éclairé -->
+      <path d="M500 106 A50 50 0 0 1 600 106 Z"/>
+      <path d="M534 106 V84 H566 V106"/>
+      <path d="M550 40 V30 M584 50 L592 42 M516 50 L508 42" stroke="#ffd27a"/>
+      <path d="M480 106 H630"/>
+    </g>
+  </g>
+
+  <g font-size="20" text-anchor="middle" stroke="#1b2422" stroke-width="6" stroke-linejoin="round" paint-order="stroke">
+    <text x="110" y="86" fill="#f4f1e8">64 kWh</text>
+    <text x="310" y="86" fill="#f4f1e8">100 kWh</text>
+  </g>
+  <g font-size="18" text-anchor="middle">
+    <text x="110" y="134" fill="#f4f1e8">principale</text>
+    <text x="310" y="134" fill="#f4f1e8">secours</text>
+    <text x="555" y="134" fill="#ffd27a">8 kWh par heure</text>
+  </g>
+</svg>
