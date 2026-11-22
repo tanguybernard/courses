@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 140" font-family="'Marker Felt', 'Chalkboard SE', 'Comic Sans MS', 'Segoe Print', cursive" role="img" aria-label="Quatre dessins à la craie : un téléphone avec un fil de photos, un casque audio, une bulle de discussion avec un robot, et l'anneau lumineux d'un trou noir">
+  <defs>
+    <filter id="craie" x="-5%" y="-10%" width="110%" height="120%">
+      <feTurbulence type="fractalNoise" baseFrequency=".035" numOctaves="2" seed="71"/>
+      <feDisplacementMap in="SourceGraphic" scale="4"/>
+    </filter>
+  </defs>
+
+  <!-- le tableau -->
+  <rect width="660" height="140" rx="16" fill="#1b2422"/>
+
+  <g filter="url(#craie)" fill="none" stroke="#f4f1e8" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <!-- un téléphone avec une photo et un cœur -->
+    <path d="M62 14 H110 Q118 14 118 22 V92 Q118 100 110 100 H62 Q54 100 54 92 V22 Q54 14 62 14 Z"/>
+    <path d="M64 28 H108 V62 H64 Z"/>
+    <path d="M64 54 L78 42 L90 52 L98 46 L108 56" stroke="#8fc7f2"/>
+    <path d="M72 80 q-7 -8 0 -10 q4 0 4 4 q0 -4 4 -4 q7 2 0 10 l-4 4 z" stroke="#ff9a8c"/>
+    <path d="M92 78 H108"/>
+
+    <!-- un casque et une note de musique -->
+    <path d="M206 70 V56 A34 34 0 0 1 274 56 V70"/>
+    <path d="M198 66 H212 V92 H198 Z M268 66 H282 V92 H268 Z"/>
+    <path d="M234 84 V58 L250 54 V78" stroke="#8fe0b0"/>
+    <circle cx="229" cy="85" r="5" stroke="#8fe0b0"/>
+    <circle cx="245" cy="79" r="5" stroke="#8fe0b0"/>
+
+    <!-- un robot qui répond dans une bulle -->
+    <path d="M372 30 H452 Q462 30 462 40 V70 Q462 80 452 80 H402 L386 96 L390 80 H372 Q362 80 362 70 V40 Q362 30 372 30 Z"/>
+    <path d="M390 44 H434 V68 H390 Z" stroke="#ffd27a"/>
+    <circle cx="403" cy="54" r="3" stroke="#ffd27a"/>
+    <circle cx="421" cy="54" r="3" stroke="#ffd27a"/>
+    <path d="M404 62 H420 M412 44 V36" stroke="#ffd27a"/>
+    <circle cx="412" cy="33" r="2" stroke="#ffd27a"/>
+
+    <!-- l'anneau lumineux d'un trou noir -->
+    <circle cx="576" cy="56" r="30" stroke="#ffb35c" stroke-width="9"/>
+    <path d="M552 74 Q576 88 600 74" stroke="#ffd27a" stroke-width="5"/>
+    <circle cx="524" cy="22" r="2"/><circle cx="628" cy="92" r="2"/><circle cx="632" cy="24" r="2"/>
+  </g>
+
+  <g font-size="19" fill="#f4f1e8" text-anchor="middle">
+    <text x="86" y="126">Instagram</text>
+    <text x="240" y="126">Spotify, Netflix</text>
+    <text x="412" y="126">ChatGPT</text>
+    <text x="576" y="126">trou noir</text>
+  </g>
+</svg>

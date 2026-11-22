@@ -11,7 +11,7 @@ Déroulé (3h30) : positionnement 15 min, intro 15 min, variables 15 min, condit
 Chaque notion : syntaxe, puis « que va afficher ce code ? » sur papier, puis mob programming. Pas de mob sur les variables : la première pratique arrive avec les conditions.
 Le deck contient volontairement plus que ce qui tient en 3h30. À sauter en priorité si le temps manque, dans cet ordre :
 1. le mob « tout remettre en fonctions » (20 min)
-2. les paliers 2 à 4 du kata (eau, batteries, tableau de bord), en commençant par les batteries
+2. les paliers 2 à 4 du kata (eau, batteries, tableau de bord et sa version en couleur), en commençant par la couleur puis les batteries
 3. les slides while et break / continue
 4. le mob « le tour des dômes »
 Ne pas sauter : les questions « que va afficher ce code ? » et le palier 1 du kata.
@@ -79,23 +79,39 @@ Précision si la question est posée : Python compile en interne le code en byte
 
 ## À quoi sert Python ?
 
-* **Data et IA** : NumPy, pandas, PyTorch
-* **Maths et recherche** : le code ressemble à la formule
-* **Scripts et automatisation** : court à écrire
-* **Backend web** : Django, FastAPI
+![Un téléphone, un casque audio, un robot qui répond, un trou noir](assets/usages-python.svg)
 
-Le point commun : **peu de code pour exprimer une idée**.
+<div style="display:grid; grid-template-columns:repeat(4, 1fr); width:95%; margin:0 auto; font-size:0.62em; line-height:1.3;">
+<div>le site est écrit en Python</div>
+<div>les recommandations</div>
+<div>entraîné avec une bibliothèque Python</div>
+<div>la première image, en 2019</div>
+</div>
+
+Vous l'avez sans doute utilisé aujourd'hui.
 
 Note:
+Poser la question avant de cliquer : « Qui a ouvert Instagram ce matin ? Écouté Spotify ? Posé une question à ChatGPT ? » Roulette possible : faire deviner à un étudiant ce que ces quatre choses ont en commun. Puis commenter les quatre exemples, déjà affichés.
+
+Ce qui est sourcé, à dire tel quel :
+- Instagram : son équipe technique écrit qu'elle fait tourner le plus grand déploiement au monde de Django, un framework web écrit en Python (blog Instagram Engineering, 2016).
+- Spotify : Python sert aux services côté serveur et à l'analyse de données, dont les recommandations (blog Spotify Engineering, 2013). Netflix : Python sert à entraîner les modèles de recommandation (blog technique Netflix, 2019).
+- ChatGPT : OpenAI, qui l'a créé, a annoncé en 2020 utiliser PyTorch, une bibliothèque Python, pour ses modèles.
+- Trou noir : l'image de 2019 a été reconstruite avec des outils Python, dont NumPy (étude de cas sur numpy.org).
+Nuance honnête : ces sites ne sont pas écrits uniquement en Python, et les articles de Spotify et d'Instagram ont plusieurs années.
+
 Pourquoi les data scientists et les matheux l'ont adopté, trois raisons à donner à l'oral :
 1. Ce ne sont pas des développeurs de métier. Python se lit presque comme du pseudo-code : pas de types à déclarer, pas d'accolades, pas de compilation. On se concentre sur le problème.
-2. On travaille en interactif : on tape une ligne, on voit le résultat, on corrige. C'est la console python3 qu'on vient de voir, et les notebooks Jupyter dans la data. Idéal pour explorer des données.
-3. Les bibliothèques. Python est lent pour le calcul pur, mais NumPy, pandas ou PyTorch sont écrites en C et en C++ : Python sert de télécommande simple à du code très rapide. Et tout est gratuit et open source, là où des outils comme MATLAB sont payants.
-Effet boule de neige : comme les chercheurs publient leurs outils en Python, les suivants l'apprennent aussi.
-Exemples connus côté web : Instagram est construit avec Django.
-Source : page « Applications for Python » du site officiel, https://www.python.org/about/apps/
-Ce que cette page confirme : les usages web (Django, Flask) et scientifique (SciPy, pandas, IPython), plus l'éducation et les outils de développement. Elle est ancienne : NumPy, PyTorch, Jupyter et FastAPI n'y figurent pas, et elle ne parle pas d'automatisation. Ces éléments et les trois raisons ci-dessus relèvent de la culture générale du métier, pas d'un texte officiel.
-Lien avec le cours : nous, on fait la troisième ligne, des scripts.
+2. On travaille en interactif : on tape une ligne, on voit le résultat, on corrige. Idéal pour explorer des données.
+3. Les bibliothèques. Python est lent pour le calcul pur, mais NumPy, pandas ou PyTorch sont écrites en C et en C++ : Python sert de télécommande simple à du code très rapide. Et tout est gratuit et open source.
+Le point commun à faire sortir : peu de code pour exprimer une idée.
+Lien avec le cours : nous, on commence par les scripts ; le graphique arrive en séance 2.
+
+Sources :
+https://instagram-engineering.com/web-service-efficiency-at-instagram-with-python-4976d078e366
+https://engineering.atspotify.com/2013/3/how-we-use-python-at-spotify
+https://openai.com/index/openai-pytorch/
+https://numpy.org/case-studies/blackhole-image
 
 ----
 
@@ -971,6 +987,41 @@ def afficher_tableau(niveaux):
 
 afficher_tableau(niveaux_oxygene(journal))
 Annoncer la suite : en séance 2, on fera le même tableau de bord avec un vrai graphique, et on verra try / except pour la ligne illisible.
+
+----
+
+## Palier 4 bis : en couleur
+
+Un code de couleur avant le texte, `FIN` après.
+
+```python
+VERT = "\033[92m"
+JAUNE = "\033[93m"
+ROUGE = "\033[91m"
+FIN = "\033[0m"
+
+print(VERT + "████" + FIN)
+```
+
+Chaque barre prend la couleur de son alerte.
+
+Note:
+Bonus, 10 minutes, sans rien installer. Ces codes ne sont pas du Python : ce sont des « séquences d'échappement ANSI », un standard que les terminaux comprennent. Python se contente d'afficher le texte, c'est le terminal qui colore.
+Fonctionne dans le terminal de Mac et Linux, dans celui de VS Code et dans Windows Terminal. Sur une très vieille invite de commandes Windows, les codes s'affichent tels quels : dans ce cas, utiliser le terminal de VS Code.
+Piège à faire sortir : si on oublie FIN, tout le reste du terminal reste coloré.
+Corrigé :
+def couleur(niveau):
+    if niveau >= 60:
+        return VERT
+    elif niveau >= 30:
+        return JAUNE
+    return ROUGE
+
+def afficher_tableau(niveaux):
+    for dome, niveau in niveaux.items():
+        barre = "█" * (niveau // 5)
+        print(f"{dome.ljust(8)} {couleur(niveau)}{barre.ljust(20)}{FIN} {niveau} % {alerte(niveau)}")
+Pour aller plus loin, à citer seulement : la bibliothèque rich fait des tableaux et des couleurs sans écrire ces codes, mais elle s'installe avec pip.
 
 ---
 

@@ -10,6 +10,7 @@
   "scripts": {
     "test": "gulp test",
     "start": "gulp serve",
+    "cours": "gulp serve --port 8123",
     "build": "gulp build"
   },
   "author": {
