@@ -3,7 +3,7 @@
 ## Séance 2 : structurer son code
 
 Note:
-Déroulé (3h30) : rappel 10 min, classes 50 min, exceptions 30 min, pause 15 min, modules et graphique en démo 20 min, mob de synthèse 25 min, évaluation papier 1 h.
+Déroulé (3h30) : rappel 10 min, classes 50 min, exceptions 30 min, pause 15 min, modules, graphique et base en direct en démo 25 min, mob de synthèse 20 min, évaluation papier 1 h.
 En plus si le groupe avance vite : le mob « le graphique de la base » (15 min). L'examen ne porte pas sur matplotlib.
 
 ----
@@ -496,6 +496,32 @@ Démo par le formateur, 10 minutes. Source : documentation de matplotlib, tutori
 Lecture ligne à ligne : « import ... as plt » donne un nom court au module ; keys() et values() donnent les clés et les valeurs du dictionnaire ; bar() dessine les barres ; axhline() trace une ligne horizontale, ici le seuil d'alerte ; show() ouvre la fenêtre.
 Lien avec la séance 1 : c'est le tableau de bord du kata, avec une vraie bibliothèque au lieu de caractères.
 Lien avec « À quoi sert Python ? » : voilà pourquoi les data scientists l'utilisent, dix lignes pour un graphique.
+
+----
+
+## La base en direct
+
+Une mesure arrive toutes les demi-secondes. Le graphique suit.
+
+```python
+for numero in range(MESURES):
+    ligne = nouvelle_mesure()     # "oxygene:Labo:11"
+    print(ligne)
+
+    morceaux = ligne.split(":")
+    niveaux[morceaux[1]] = int(morceaux[2])
+
+    dessiner()
+    plt.pause(0.5)
+```
+
+Note:
+Démo par le formateur, 5 minutes, pour le plaisir. Le fichier complet : Python_2eme_annee/demo/base_en_direct.py
+Lancer dans le venv : python3 base_en_direct.py. Mettre le terminal à gauche et la fenêtre du graphique à droite : les lignes du journal défilent, les barres bougent et changent de couleur en passant sous 30 puis au-dessus de 60.
+Ce qu'il faut faire remarquer : tout ce qui est dans cette boucle, ils l'ont déjà écrit. Une boucle for, le split du kata, un dictionnaire mis à jour, la fonction dessiner qui est le graphique de la slide précédente. La seule nouveauté est plt.pause(), qui affiche puis attend.
+nouvelle_mesure() simule un capteur avec random.choice et random.randint, vus dans la slide « bibliothèque standard ».
+Question à poser : que faudrait-il changer pour de vrais capteurs ? Réponse : seulement nouvelle_mesure().
+Arrêter : fermer la fenêtre ou Ctrl+C.
 
 ----
 

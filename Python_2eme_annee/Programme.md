@@ -49,8 +49,8 @@ Le deck contient volontairement plus que ce qui tient en 3h30. À sauter en prio
 | 50 min | Classes et objets : `class`, `__init__`, `self`, méthodes, `__str__` |
 | 30 min | Erreurs et exceptions : lire une erreur, `try` / `except`, `raise` |
 | 15 min | Pause |
-| 20 min | Modules : `import`, bibliothèque standard, puis `pip` et un graphique matplotlib en démo |
-| 25 min | Mob de synthèse : la classe `Base` |
+| 25 min | Modules : `import`, bibliothèque standard, puis `pip`, un graphique matplotlib et la base « en direct » en démo ([demo/base_en_direct.py](demo/base_en_direct.py)) |
+| 20 min | Mob de synthèse : la classe `Base` |
 | 60 min | Évaluation papier |
 
 Slides : `slides/python/seance2.md`
