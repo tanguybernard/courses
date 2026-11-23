@@ -3,7 +3,7 @@
 ## Séance 2 : structurer son code
 
 Note:
-Déroulé (3h30) : rappel 10 min, classes 50 min, exceptions 30 min, pause 15 min, modules, graphique et base en direct en démo 25 min, mob de synthèse 20 min, évaluation papier 1 h.
+Déroulé (3h30) : rappel 10 min, classes 50 min, exceptions 30 min, pause 15 min, modules, graphique et base en direct en démo 25 min, mob de synthèse 40 min, évaluation papier 40 min.
 En plus si le groupe avance vite : le mob « le graphique de la base » (15 min). L'examen ne porte pas sur matplotlib.
 
 ----
@@ -14,7 +14,7 @@ En plus si le groupe avance vite : le mob « le graphique de la base » (15 min)
 * Classes et objets
 * Erreurs et exceptions
 * Découper en plusieurs fichiers
-* Évaluation sur papier (1 h)
+* Évaluation sur papier (40 min)
 
 ----
 
@@ -617,9 +617,9 @@ def afficher_graphique(base):
 
 ## Évaluation
 
-* 1 heure, sur papier
+* 40 minutes, sur papier
 * Sans machine, sans document
-* QCM, lecture de code, correction d'erreurs, écriture de code
+* QCM, lecture de code, écriture de code
 
 Note:
 Ranger les ordinateurs. Distribuer les versions A et B en alternance.

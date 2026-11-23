@@ -3,7 +3,7 @@
 **Public :** 2e année de bachelor, premier cours de Python.
 **Pré-requis :** avoir déjà programmé (TypeScript, Node.js, notions de POO).
 **Durée :** 7 heures, en deux demi-journées de 3h30.
-**Évaluation :** individuelle, sur papier, sans machine (1 heure en fin de séance 2).
+**Évaluation :** individuelle, sur papier, sans machine (40 minutes en fin de séance 2).
 
 ## Objectif
 
@@ -50,8 +50,8 @@ Le deck contient volontairement plus que ce qui tient en 3h30. À sauter en prio
 | 30 min | Erreurs et exceptions : lire une erreur, `try` / `except`, `raise` |
 | 15 min | Pause |
 | 25 min | Modules : `import`, bibliothèque standard, puis `pip`, un graphique matplotlib et la base « en direct » en démo ([demo/base_en_direct.py](demo/base_en_direct.py)) |
-| 20 min | Mob de synthèse : la classe `Base` |
-| 60 min | Évaluation papier |
+| 40 min | Mob de synthèse : la classe `Base`, puis le mob « le graphique de la base » |
+| 40 min | Évaluation papier ([exercices40min](exercices40min/CC_Python.md)) |
 
 Slides : `slides/python/seance2.md`
 
@@ -61,10 +61,11 @@ Slides : `slides/python/seance2.md`
 |---|---|
 | [positionnement.md](positionnement.md) | Test de départ, non noté |
 | [memo_typescript_python.md](memo_typescript_python.md) | Fiche mémo à distribuer |
-| [exercices/CC_Python.md](exercices/CC_Python.md) | Évaluation, version A |
-| [exercices/CC_Python_VersionB.md](exercices/CC_Python_VersionB.md) | Évaluation, version B |
-| [exercices/CC_Python_correction.md](exercices/CC_Python_correction.md) | Corrigé et barème, version A |
-| [exercices/CC_Python_VersionB_correction.md](exercices/CC_Python_VersionB_correction.md) | Corrigé et barème, version B |
+| [exercices40min/CC_Python.md](exercices40min/CC_Python.md) | Évaluation de 40 minutes, version A |
+| [exercices40min/CC_Python_VersionB.md](exercices40min/CC_Python_VersionB.md) | Évaluation de 40 minutes, version B |
+| [exercices40min/CC_Python_correction.md](exercices40min/CC_Python_correction.md) | Corrigé et barème, version A |
+| [exercices40min/CC_Python_VersionB_correction.md](exercices40min/CC_Python_VersionB_correction.md) | Corrigé et barème, version B |
+| [exercices/](exercices/) | Ancienne version d'une heure, avec la partie « trouvez l'erreur » |
 
 Les corrigés des mobs sont dans les notes orateur des slides (touche `S`).
 
