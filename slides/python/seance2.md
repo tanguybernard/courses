@@ -3,8 +3,8 @@
 ## Séance 2 : structurer son code
 
 Note:
-Déroulé (3h30) : rappel 10 min, classes 50 min, exceptions 30 min, pause 15 min, modules, graphique et base en direct en démo 25 min, mob de synthèse 40 min, évaluation papier 40 min.
-En plus si le groupe avance vite : le mob « le graphique de la base » (15 min). L'examen ne porte pas sur matplotlib.
+Déroulé (3h30) : rappel 10 min, classes 50 min, exceptions 30 min, pause 15 min, modules, graphique et base en direct en démo 25 min, mob de synthèse 35 min, une API avec FastAPI en démo 5 min, évaluation papier 40 min.
+En plus si le groupe avance vite : le mob « le graphique de la base » (15 min). L'examen ne porte ni sur matplotlib ni sur FastAPI.
 
 ----
 
@@ -602,6 +602,36 @@ def afficher_graphique(base):
     plt.ylabel("Oxygène (%)")
     plt.title("Base Ares")
     plt.show()
+
+---
+
+## Et une API ?
+
+```python
+from fastapi import FastAPI, HTTPException
+
+app = FastAPI(title="Base Ares")
+niveaux = {"Habitat": 82, "Serre": 45, "Labo": 12}
+
+@app.get("/domes")
+def lire_domes():
+    return niveaux
+
+@app.get("/domes/{nom}")
+def lire_dome(nom):
+    if nom not in niveaux:
+        raise HTTPException(404, "Dôme inconnu")
+    return {"nom": nom, "oxygene": niveaux[nom]}
+```
+
+Note:
+Démo par le formateur, 5 minutes, juste avant l'évaluation. Hors examen. Le fichier complet : Python_2eme_annee/demo-api/main.py (il a les quatre dômes et ajoute le niveau d'alerte).
+Source : documentation de FastAPI, tutoriel « Premiers pas ». https://fastapi.tiangolo.com/fr/tutorial/first-steps/
+Lancer dans le venv : fastapi dev main.py. Ouvrir dans le navigateur, dans cet ordre : /domes, /domes/Labo, /domes/Cuisine (erreur 404), puis /docs.
+Le lien avec Express : @app.get("/domes") juste au-dessus d'une fonction, c'est app.get("/domes", (req, res) => ...). La ligne qui commence par @ s'appelle un décorateur : elle dit à FastAPI quelle fonction répond à quelle adresse.
+Ce qu'il faut faire remarquer : à part le décorateur, ils savent tout lire. Un dictionnaire, deux fonctions, un if, un raise. La fonction renvoie un dictionnaire et FastAPI le transforme en JSON, sans res.json().
+{nom} dans l'adresse arrive en paramètre de la fonction, comme req.params.nom.
+Le moment qui marque : /docs. La documentation de l'API est générée toute seule, et on peut y tester les routes.
 
 ---
 

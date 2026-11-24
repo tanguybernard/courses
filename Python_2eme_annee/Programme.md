@@ -9,7 +9,7 @@
 
 À l'issue des deux séances, l'étudiant sait écrire seul un script Python qui applique une logique métier simple : variables, conditions, boucles, listes et dictionnaires, fonctions, classes.
 
-Hors périmètre : lecture de fichiers, appels d'API, héritage. Une seule bibliothèque externe est montrée, matplotlib, en démonstration et hors examen.
+Hors périmètre : lecture de fichiers, appels d'API, héritage. Deux bibliothèques externes sont montrées en démonstration et hors examen : matplotlib et FastAPI.
 
 ## Méthode
 
@@ -50,7 +50,8 @@ Le deck contient volontairement plus que ce qui tient en 3h30. À sauter en prio
 | 30 min | Erreurs et exceptions : lire une erreur, `try` / `except`, `raise` |
 | 15 min | Pause |
 | 25 min | Modules : `import`, bibliothèque standard, puis `pip`, un graphique matplotlib et la base « en direct » en démo ([demo/base_en_direct.py](demo/base_en_direct.py)) |
-| 40 min | Mob de synthèse : la classe `Base`, puis le mob « le graphique de la base » |
+| 35 min | Mob de synthèse : la classe `Base`, puis le mob « le graphique de la base » |
+| 5 min | Démo : une API en quinze lignes avec FastAPI ([demo-api/main.py](demo-api/main.py)) |
 | 40 min | Évaluation papier ([exercices40min](exercices40min/CC_Python.md)) |
 
 Slides : `slides/python/seance2.md`
